@@ -9,7 +9,6 @@ import org.hibernate.Session;
 import com.wang.objects.Article;
 
 public class ArticlesDBService {
-	///asdasd
 	// grade 缩进级别
 	// 用Arraylist来创建递归， 从0 开始开始循环
 	static public List<Article> treePopulator(List<Article> articles, int id) {
