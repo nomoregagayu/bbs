@@ -1,0 +1,10 @@
+utf8 编码修改
+
+modify the my.conf file under /etc/local/mysql/ folder
+在[client]标签下加入
+default-character-set = utf8  
+在[mysqld]标签下加入 
+character-set-server=utf8  
+
+set names gbk
+MySQL会把gbk转成utf8
