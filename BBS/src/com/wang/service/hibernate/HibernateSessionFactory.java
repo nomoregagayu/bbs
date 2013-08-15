@@ -53,7 +53,7 @@ public class HibernateSessionFactory
      * @return Session
      * @throws HibernateException
      */
-    public static Session getSession() throws HibernateException
+    public static synchronized Session getSession() throws HibernateException
     {
 	Session session = (Session) threadLocal.get();
 
@@ -111,7 +111,7 @@ public class HibernateSessionFactory
      * return session factory
      * 
      */
-    public static org.hibernate.SessionFactory getSessionFactory()
+    public static synchronized org.hibernate.SessionFactory getSessionFactory()
     {
 	return sessionFactory;
     }

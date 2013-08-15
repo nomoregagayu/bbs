@@ -1,8 +1,7 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*, com.wang.objects.Article, java.util.*,  org.hibernate.cfg.*, com.wang.service.hibernate.*"  %>
+<%@ page import="java.sql.*, com.wang.objects.Post, java.util.*,  org.hibernate.cfg.*, com.wang.service.hibernate.*"  %>
  <%
- 	List<Article> articles = new ArrayList<Article>();
-    articles =  ArticlesDBService.treePopulator(articles, 0);
+ 	List<Post> posts = PostDBService.getPosts();
  %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
@@ -73,7 +72,7 @@
                 </thead>
                 <tbody>
                 <%
-                for(int i =0;i<articles.size();i++){
+                for(int i =0;i<posts.size();i++){
                  %>
                   <tr class="jive-even">
                     <td class="jive-first" nowrap="nowrap" width="1%"><div class="jive-bullet"> <img src="images/read-16x16.gif" alt="已读" border="0" height="16" width="16">
@@ -81,11 +80,11 @@
                       </div></td>
                     <td nowrap="nowrap" width="1%">&nbsp;
                       &nbsp;</td> 
-                    <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="article_details.jsp?id=<%= articles.get(i).getId() %>"><%--并且包括ID号--%><%=articles.get(i).getTitle() %></a></td>
+                    <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="post_details.jsp?pid=<%= posts.get(i).getPostId() %>"><%--并且包括ID号--%><%=posts.get(i).getTitle() %></a></td>
                     <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226030">gagayu</a> </span></td>
-                    <td class="jive-view-count" width="1%"> 111</td>
+                    <td class="jive-view-count" width="1%"> <%=posts.get(i).getViewCount() %></td>
                     <td class="jive-msg-count" width="1%"> 112323</td>
-                    <td class="jive-last" nowrap="nowrap" width="1%"><div class="jive-last-post"> <%= articles.get(i).getPdate() %>> <br>
+                    <td class="jive-last" nowrap="nowrap" width="1%"><div class="jive-last-post"> <%= posts.get(i).getPdate() %> <br>
                         by: <a href="http://bbs.chinajavaworld.com/thread.jspa?messageID=780182#780182" title="jingjiangjun" style="">jingjiangjun &#187;</a> </div></td>
                   </tr>
                 <!--   <tr class="jive-odd">

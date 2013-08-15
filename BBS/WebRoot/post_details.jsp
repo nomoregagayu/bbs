@@ -1,22 +1,22 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
 <%@ page import="com.wang.objects.*, com.wang.service.hibernate.*"%>
 <%
-	String strId = request.getParameter("id");
+	String strId = request.getParameter("pid");
 	//如果后面放到前面 空指针错
 	if (strId == null || strId.trim().equals("")) {
 		out.println("Error ID!");
 		//返回当前函数,不再往下执行
 		return;
 	}
-	int id = 0;
+	int pid = 0;
 	try {
-	id = Integer.parseInt(strId);
+		pid = Integer.parseInt(strId);
 	} catch (NumberFormatException e) {
 		out.println("ErrorID not int");
 	}
-	  
-	Article article =  ArticlesDBService.getArticle(id);
-	if (article == null) {
+
+	List<Reply> replys = ReplyDBService.getReplys(pid);
+	if (replys == null) {
 		out.println("你寻找的帖子不存在");
 		return;
 	}
@@ -66,7 +66,7 @@
 								2 Platform, Standard Edition (J2SE)</a> &#187; <a
 								href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=0">Java语言*初级版</a>
 						</p>
-						<p class="jive-page-title">主题: 初学java遇一难题！！望大家能帮忙一下 谢谢了</p>
+						<p class="jive-page-title">&nbsp<%=replys.get(0).getTitle() %></p>
 					</td>
 					<td width="1%"><div class="jive-accountbox"></div>
 					</td>
@@ -83,7 +83,7 @@
 								width="16"> </a>
 						</td>
 						<td class="jive-icon-label"><a id="jive-reply-thread"
-							href="reply.jsp?id=<%= article.getId()%>">回复本主题</a>
+							href="reply.jsp?pid=<%=pid%>">回复本主题</a>
 						</td>
 					</tr>
 				</tbody>
@@ -97,6 +97,10 @@
 							<div class="jive-message-list">
 								<div class="jive-table">
 									<div class="jive-messagebox">
+										<!--reply在这下面  -->
+										<%
+											for (int i = 0; i < replys.size(); i++) {
+										%>
 										<table summary="Message" border="0" cellpadding="0"
 											cellspacing="0" width="100%">
 											<tbody>
@@ -137,8 +141,8 @@
 															<tbody>
 																<tr valign="top">
 																	<td width="1%"></td>
-																	<td width="97%"><span class="jive-subject">
-																			父贴</span></td>
+																	<td width="97%"><span class="jive-subject"><%=replys.get(i).getTitle() %>
+																			</span></td>
 																	<td class="jive-rating-buttons" nowrap="nowrap"
 																		width="1%"></td>
 																	<td width="1%"><div class="jive-buttons">
@@ -152,8 +156,7 @@
 																								src="images/reply-16x16.gif" alt="回复本主题"
 																								border="0" height="16" width="16"> </a></td>
 																						<td class="jive-icon-label"><a
-																							href="reply.jsp?id=<%=article.getId() %>"
-																							title="回复本主题">回复</a></td>
+																							href="reply.jsp?id=<%=1%>" title="回复本主题">回复</a></td>
 																					</tr>
 																				</tbody>
 																			</table>
@@ -161,9 +164,10 @@
 																	</td>
 																</tr>
 																<tr>
+																<td width="1%"></td>
 																	<td colspan="4"
 																		style="border-top: 1px solid rgb(204, 204, 204);"><br>
-																		<%=article.getCont()%> <br> <br></td>
+																		<%=replys.get(i).getContent()%> <br> <br></td>
 																</tr>
 																<tr>
 																	<td colspan="4" style="font-size: 9pt;"><img
@@ -183,6 +187,10 @@
 												</tr>
 											</tbody>
 										</table>
+										<%
+											}
+										%>
+										<!--reply结束  -->
 									</div>
 								</div>
 							</div>
