@@ -1,7 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
-<%@ page import="com.wang.objects.*, com.wang.service.hibernate.*"%>
+<%@ page import="com.wang.objects.*,com.wang.dao.impl.*"%>
 <%
-
 	String strId = request.getParameter("pid");
 	//如果后面放到前面 空指针错
 	if (strId == null || strId.trim().equals("")) {
@@ -16,7 +15,7 @@
 		out.println("ErrorID not int");
 	}
 
-	List<Reply> replys = ReplyDBService.getReplys(pid);
+	List<Reply> replys = new ReplyDAOImpl().getReplys(pid);
 	if (replys == null) {
 		out.println("你寻找的帖子不存在");
 		return;

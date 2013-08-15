@@ -1,8 +1,8 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*, com.wang.objects.Post, java.util.*,  org.hibernate.cfg.*, com.wang.service.hibernate.*"  %>
+<%@ page import="java.sql.*, com.wang.objects.Post, java.util.*,  org.hibernate.cfg.*,com.wang.dao.impl.*"  %>
  <%
- request.setCharacterEncoding("GB18030");
- 	List<Post> posts = PostDBService.getPosts();
+ 	request.setCharacterEncoding("GB18030");
+   	List<Post> posts = new PostDAOImpl().getPosts();
  %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
