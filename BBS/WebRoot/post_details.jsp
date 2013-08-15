@@ -84,7 +84,7 @@
 								width="16"> </a>
 						</td>
 						<td class="jive-icon-label"><a id="jive-reply-thread"
-							href="replying.jsp?pid=<%=pid%>&title=<%=replys.get(0).getTitle() %>">回复本主题</a>
+							href="reply.jsp?pid=<%=pid%>&title=<%=replys.get(0).getTitle() %>">回复本主题</a>
 						</td>
 					</tr>
 				</tbody>

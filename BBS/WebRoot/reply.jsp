@@ -69,7 +69,7 @@ request.setCharacterEncoding("UTF-8");
 									<div class="jive-messagebox"></div>
 								</div>
 								<!--表单  -->
-								<form action="replyingRep.jsp" method="post">
+								<form action="replyRep.jsp" method="post">
 									<!--form基本都是post方法  -->
 									<input type="hidden" name="pid" value="<%=pid%>"> 标题:
 									<input type="text" name="title"><br> 内容:
