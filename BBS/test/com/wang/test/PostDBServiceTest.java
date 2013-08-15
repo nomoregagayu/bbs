@@ -17,6 +17,7 @@ public class PostDBServiceTest {
 		System.out.println(posts.size());
 		List<Reply> replys = ReplyDBService.getReplys(1);
 		System.out.println(replys.size());
+		ReplyDBService.saveReply(1, "啊的撒", "是的撒");
 	}
 
 

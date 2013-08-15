@@ -1,11 +1,12 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ page import="com.wang.objects.*, com.wang.service.hibernate.*"%>
 <%
+
 	String strId = request.getParameter("pid");
-	//Èç¹ûºóÃæ·Åµ½Ç°Ãæ ¿ÕÖ¸Õë´í
+	//å¦‚æœåé¢æ”¾åˆ°å‰é¢ ç©ºæŒ‡é’ˆé”™
 	if (strId == null || strId.trim().equals("")) {
 		out.println("Error ID!");
-		//·µ»Øµ±Ç°º¯Êı,²»ÔÙÍùÏÂÖ´ĞĞ
+		//è¿”å›å½“å‰å‡½æ•°,ä¸å†å¾€ä¸‹æ‰§è¡Œ
 		return;
 	}
 	int pid = 0;
@@ -17,15 +18,15 @@
 
 	List<Reply> replys = ReplyDBService.getReplys(pid);
 	if (replys == null) {
-		out.println("ÄãÑ°ÕÒµÄÌû×Ó²»´æÔÚ");
+		out.println("ä½ å¯»æ‰¾çš„å¸–å­ä¸å­˜åœ¨");
 		return;
 	}
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-<title>Java|JavaÊÀ½ç_ÖĞÎÄÂÛÌ³|ChinaJavaWorld¼¼ÊõÂÛÌ³ :
-	³õÑ§javaÓöÒ»ÄÑÌâ£¡£¡Íû´ó¼ÒÄÜ°ïÃ¦Ò»ÏÂ ...</title>
+<title>Java|Javaä¸–ç•Œ_ä¸­æ–‡è®ºå›|ChinaJavaWorldæŠ€æœ¯è®ºå› :
+	åˆå­¦javaé‡ä¸€éš¾é¢˜ï¼ï¼æœ›å¤§å®¶èƒ½å¸®å¿™ä¸€ä¸‹ ...</title>
 <meta http-equiv="content-type" content="text/html; charset=GBK">
 <link rel="stylesheet" type="text/css" href="images/style.css"
 	title="Integrated Styles">
@@ -41,7 +42,7 @@
 				<td width="140"><a
 					href="http://bbs.chinajavaworld.com/index.jspa"><img
 						src="images/header-left.gif"
-						alt="Java|JavaÊÀ½ç_ÖĞÎÄÂÛÌ³|ChinaJavaWorld¼¼ÊõÂÛÌ³" border="0"> </a>
+						alt="Java|Javaä¸–ç•Œ_ä¸­æ–‡è®ºå›|ChinaJavaWorldæŠ€æœ¯è®ºå›" border="0"> </a>
 				</td>
 				<td><img src="images/header-stretch.gif" alt="" border="0"
 					height="57" width="100%">
@@ -58,13 +59,13 @@
 			<tbody>
 				<tr valign="top">
 					<td width="99%"><p class="jive-breadcrumbs">
-							<a href="http://bbs.chinajavaworld.com/index.jspa">Ê×Ò³</a> &#187;
+							<a href="http://bbs.chinajavaworld.com/index.jspa">é¦–é¡µ</a> &#187;
 							<a
-								href="http://bbs.chinajavaworld.com/forumindex.jspa?categoryID=1">ChinaJavaWorld¼¼ÊõÂÛÌ³|JavaÊÀ½ç_ÖĞÎÄÂÛÌ³</a>
+								href="http://bbs.chinajavaworld.com/forumindex.jspa?categoryID=1">ChinaJavaWorldæŠ€æœ¯è®ºå›|Javaä¸–ç•Œ_ä¸­æ–‡è®ºå›</a>
 							&#187; <a
 								href="http://bbs.chinajavaworld.com/category.jspa?categoryID=2">Java
 								2 Platform, Standard Edition (J2SE)</a> &#187; <a
-								href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=0">JavaÓïÑÔ*³õ¼¶°æ</a>
+								href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=0">Javaè¯­è¨€*åˆçº§ç‰ˆ</a>
 						</p>
 						<p class="jive-page-title">&nbsp<%=replys.get(0).getTitle() %></p>
 					</td>
@@ -79,11 +80,11 @@
 					<tr>
 						<td class="jive-icon"><a
 							href="http://bbs.chinajavaworld.com/post%21reply.jspa?threadID=744236"><img
-								src="images/reply-16x16.gif" alt="»Ø¸´±¾Ö÷Ìâ" border="0" height="16"
+								src="images/reply-16x16.gif" alt="å›å¤æœ¬ä¸»é¢˜" border="0" height="16"
 								width="16"> </a>
 						</td>
 						<td class="jive-icon-label"><a id="jive-reply-thread"
-							href="reply.jsp?pid=<%=pid%>">»Ø¸´±¾Ö÷Ìâ</a>
+							href="replying.jsp?pid=<%=pid%>&title=<%=replys.get(0).getTitle() %>">å›å¤æœ¬ä¸»é¢˜</a>
 						</td>
 					</tr>
 				</tbody>
@@ -97,7 +98,7 @@
 							<div class="jive-message-list">
 								<div class="jive-table">
 									<div class="jive-messagebox">
-										<!--replyÔÚÕâÏÂÃæ  -->
+										<!--replyåœ¨è¿™ä¸‹é¢  -->
 										<%
 											for (int i = 0; i < replys.size(); i++) {
 										%>
@@ -106,7 +107,7 @@
 											<tbody>
 												<tr id="jive-message-780144" class="jive-odd" valign="top">
 													<td class="jive-first" width="1%">
-														<!-- ¸öÈËĞÅÏ¢µÄtable -->
+														<!-- ä¸ªäººä¿¡æ¯çš„table -->
 														<table border="0" cellpadding="0" cellspacing="0"
 															width="150">
 															<tbody>
@@ -118,24 +119,24 @@
 																					<td style="padding: 0px;" width="1%"><nobr>
 																							<a
 																								href="http://bbs.chinajavaworld.com/profile.jspa?userID=215489"
-																								title="ÅµÂüµ×¿Í">ÅµÂüµ×¿Í</a>
+																								title="è¯ºæ›¼åº•å®¢">è¯ºæ›¼åº•å®¢</a>
 																						</nobr></td>
 																					<td style="padding: 0px;" width="99%"><img
 																						class="jive-status-level-image"
-																						src="images/level3.gif" title="ÊÀ½çĞÂÊÖ" alt=""
+																						src="images/level3.gif" title="ä¸–ç•Œæ–°æ‰‹" alt=""
 																						border="0"><br></td>
 																				</tr>
 																			</tbody>
 																		</table> <img class="jive-avatar"
 																		src="images/avatar-display.png" alt="" border="0">
 																		<br> <br> <span class="jive-description">
-																			·¢±í: 34 <br> µãÊı: 100<br> ×¢²á: 07-5-10 <br>
+																			å‘è¡¨: 34 <br> ç‚¹æ•°: 100<br> æ³¨å†Œ: 07-5-10 <br>
 																			<a href="http://blog.chinajavaworld.com/u/215489"
-																			target="_blank"><font color="red">·ÃÎÊÎÒµÄBlog</font>
+																			target="_blank"><font color="red">è®¿é—®æˆ‘çš„Blog</font>
 																		</a> </span></td>
 																</tr>
 															</tbody>
-														</table> <!--¸öÈËĞÅÏ¢table½áÊø--></td>
+														</table> <!--ä¸ªäººä¿¡æ¯tableç»“æŸ--></td>
 													<td class="jive-last" width="99%"><table border="0"
 															cellpadding="0" cellspacing="0" width="100%">
 															<tbody>
@@ -152,11 +153,11 @@
 																						<td>&nbsp;</td>
 																						<td class="jive-icon"><a
 																							href="http://bbs.chinajavaworld.com/post%21reply.jspa?messageID=780144"
-																							title="»Ø¸´±¾Ö÷Ìâ"><img
-																								src="images/reply-16x16.gif" alt="»Ø¸´±¾Ö÷Ìâ"
+																							title="å›å¤æœ¬ä¸»é¢˜"><img
+																								src="images/reply-16x16.gif" alt="å›å¤æœ¬ä¸»é¢˜"
 																								border="0" height="16" width="16"> </a></td>
 																						<td class="jive-icon-label"><a
-																							href="reply.jsp?id=<%=1%>" title="»Ø¸´±¾Ö÷Ìâ">»Ø¸´</a></td>
+																							href="reply.jsp?id=<%=1%>" title="å›å¤æœ¬ä¸»é¢˜">å›å¤</a></td>
 																					</tr>
 																				</tbody>
 																			</table>
@@ -172,13 +173,13 @@
 																<tr>
 																	<td colspan="4" style="font-size: 9pt;"><img
 																		src="images/sigline.gif"><br> <font
-																		color="#568ac2">Ñ§³ÌĞòÊÇ¿İÔïµÄÊÂÇé£¬Ô¸´ó¼ÒÔÚÒ»ÆğÄÜ´ÓÖĞµÃµ½¿ìÀÖ£¡</font> <br>
+																		color="#568ac2">å­¦ç¨‹åºæ˜¯æ¯ç‡¥çš„äº‹æƒ…ï¼Œæ„¿å¤§å®¶åœ¨ä¸€èµ·èƒ½ä»ä¸­å¾—åˆ°å¿«ä¹ï¼</font> <br>
 																	</td>
 																</tr>
 																<tr>
 																	<td colspan="4"
 																		style="border-top: 1px solid rgb(204, 204, 204); font-size: 9pt; table-layout: fixed;">
-																		¡¤<a href="http://www.bjsxt.com"><font
+																		Â·<a href="http://www.bjsxt.com"><font
 																			color="#666666">http://www.bjsxt.com</font> </a></td>
 																</tr>
 															</tbody>
@@ -190,7 +191,7 @@
 										<%
 											}
 										%>
-										<!--reply½áÊø  -->
+										<!--replyç»“æŸ  -->
 									</div>
 								</div>
 							</div>
@@ -205,10 +206,10 @@
 														<tr>
 															<td><a
 																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20"><img
-																	src="images/arrow-left-16x16.gif" alt="·µ»Øµ½Ö÷ÌâÁĞ±í"
+																	src="images/arrow-left-16x16.gif" alt="è¿”å›åˆ°ä¸»é¢˜åˆ—è¡¨"
 																	border="0" height="16" hspace="6" width="16"> </a></td>
 															<td><a
-																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20">·µ»Øµ½Ö÷ÌâÁĞ±í</a>
+																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20">è¿”å›åˆ°ä¸»é¢˜åˆ—è¡¨</a>
 															</td>
 														</tr>
 													</tbody>

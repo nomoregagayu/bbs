@@ -12,12 +12,25 @@ public class Reply {
 	@GeneratedValue
 	private int replyId;
 	private int pid;
-	private int replyid;
+	private int followId;
 	private String author;
 	private String	title;
 	private String content;
 	private Timestamp pdate;
 	
+	public Reply() {
+		super();
+	}
+	public Reply(int pid, int followId, String author, String title,
+			String content, Timestamp pdate) {
+		super();
+		this.pid = pid;
+		this.followId = followId;
+		this.author = author;
+		this.title = title;
+		this.content = content;
+		this.pdate = pdate;
+	}
 	public int getReplyId() {
 		return replyId;
 	}
@@ -30,11 +43,11 @@ public class Reply {
 	public void setPid(int pid) {
 		this.pid = pid;
 	}
-	public int getReplyid() {
-		return replyid;
+	public int getFollowId() {
+		return followId;
 	}
-	public void setReplyid(int replyid) {
-		this.replyid = replyid;
+	public void setFollowId(int followId) {
+		this.followId = followId;
 	}
 	public String getAuthor() {
 		return author;
@@ -60,5 +73,6 @@ public class Reply {
 	public void setPdate(Timestamp pdate) {
 		this.pdate = pdate;
 	}
+	
 	
 }

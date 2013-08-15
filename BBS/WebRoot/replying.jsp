@@ -1,12 +1,17 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-	Integer pid = Integer.parseInt(request.getParameter("id"));
+response.setContentType("text/html;charset=UTF-8"); 
+request.setCharacterEncoding("UTF-8");
+
+	Integer pid = Integer.parseInt(request.getParameter("pid"));
+	
+	String title = new String(request.getParameter("title").getBytes("8859_1")); 
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-<title>Java|JavaÊÀ½ç_ÖĞÎÄÂÛÌ³|ChinaJavaWorld¼¼ÊõÂÛÌ³ :
-	³õÑ§javaÓöÒ»ÄÑÌâ£¡£¡Íû´ó¼ÒÄÜ°ïÃ¦Ò»ÏÂ ...</title>
+<title>Java|Javaä¸–ç•Œ_ä¸­æ–‡è®ºå›|ChinaJavaWorldæŠ€æœ¯è®ºå› :
+	åˆå­¦javaé‡ä¸€éš¾é¢˜ï¼ï¼æœ›å¤§å®¶èƒ½å¸®å¿™ä¸€ä¸‹ ...</title>
 <meta http-equiv="content-type" content="text/html; charset=GBK">
 <link rel="stylesheet" type="text/css" href="images/style.css"
 	title="Integrated Styles">
@@ -22,11 +27,14 @@
 				<td width="140"><a
 					href="http://bbs.chinajavaworld.com/index.jspa"><img
 						src="images/header-left.gif"
-						alt="Java|JavaÊÀ½ç_ÖĞÎÄÂÛÌ³|ChinaJavaWorld¼¼ÊõÂÛÌ³" border="0"> </a></td>
+						alt="Java|Javaä¸–ç•Œ_ä¸­æ–‡è®ºå›|ChinaJavaWorldæŠ€æœ¯è®ºå›" border="0"> </a>
+				</td>
 				<td><img src="images/header-stretch.gif" alt="" border="0"
-					height="57" width="100%"></td>
+					height="57" width="100%">
+				</td>
 				<td width="1%"><img src="images/header-right.gif" alt=""
-					border="0"></td>
+					border="0">
+				</td>
 			</tr>
 		</tbody>
 	</table>
@@ -36,16 +44,18 @@
 			<tbody>
 				<tr valign="top">
 					<td width="99%"><p class="jive-breadcrumbs">
-							<a href="http://bbs.chinajavaworld.com/index.jspa">Ê×Ò³</a> &#187;
+							<a href="http://bbs.chinajavaworld.com/index.jspa">é¦–é¡µ</a> &#187;
 							<a
-								href="http://bbs.chinajavaworld.com/forumindex.jspa?categoryID=1">ChinaJavaWorld¼¼ÊõÂÛÌ³|JavaÊÀ½ç_ÖĞÎÄÂÛÌ³</a>
+								href="http://bbs.chinajavaworld.com/forumindex.jspa?categoryID=1">ChinaJavaWorldæŠ€æœ¯è®ºå›|Javaä¸–ç•Œ_ä¸­æ–‡è®ºå›</a>
 							&#187; <a
 								href="http://bbs.chinajavaworld.com/category.jspa?categoryID=2">Java
 								2 Platform, Standard Edition (J2SE)</a> &#187; <a
-								href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=0">JavaÓïÑÔ*³õ¼¶°æ</a>
+								href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=0">Javaè¯­è¨€*åˆçº§ç‰ˆ</a>
 						</p>
-						<p class="jive-page-title">Ö÷Ìâ: ³õÑ§javaÓöÒ»ÄÑÌâ£¡£¡Íû´ó¼ÒÄÜ°ïÃ¦Ò»ÏÂ Ğ»Ğ»ÁË</p></td>
-					<td width="1%"><div class="jive-accountbox"></div></td>
+						<p class="jive-page-title"><%=title%></p>
+					</td>
+					<td width="1%"><div class="jive-accountbox"></div>
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -58,11 +68,11 @@
 								<div class="jive=table">
 									<div class="jive-messagebox"></div>
 								</div>
-								<!--±íµ¥  -->
-								<form action="replyRep.jsp" method="post">
-									<!--form»ù±¾¶¼ÊÇpost·½·¨  -->
-									<input type="hidden" name="pid" value="<%= pid%>"> ±êÌâ: <input
-										type="text" name="title"><br> ÄÚÈİ:
+								<!--è¡¨å•  -->
+								<form action="replyingRep.jsp" method="post">
+									<!--formåŸºæœ¬éƒ½æ˜¯postæ–¹æ³•  -->
+									<input type="hidden" name="pid" value="<%=pid%>"> æ ‡é¢˜:
+									<input type="text" name="title"><br> å†…å®¹:
 									<textarea name="content" rows="10" cols="40"></textarea>
 									<br> <input type="submit" value="submit">
 								</form>
@@ -78,21 +88,22 @@
 														<tr>
 															<td><a
 																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20"><img
-																	src="images/arrow-left-16x16.gif" alt="·µ»Øµ½Ö÷ÌâÁĞ±í"
-																	border="0" height="16" hspace="6" width="16"> </a>
-															</td>
+																	src="images/arrow-left-16x16.gif" alt="è¿”å›åˆ°ä¸»é¢˜åˆ—è¡¨"
+																	border="0" height="16" hspace="6" width="16"> </a></td>
 															<td><a
-																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20">·µ»Øµ½Ö÷ÌâÁĞ±í</a>
+																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20">è¿”å›åˆ°ä¸»é¢˜åˆ—è¡¨</a>
 															</td>
 														</tr>
 													</tbody>
-												</table></td>
+												</table>
+											</td>
 											<td nowrap="nowrap" width="1%">&nbsp;</td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
-						</div></td>
+						</div>
+					</td>
 					<td width="1%"></td>
 				</tr>
 			</tbody>

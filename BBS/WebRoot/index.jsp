@@ -1,6 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
-<% //GB18030´óÓÚGBK´óÓÚGB2312 °üº¬µÄ×Ö·û´óÓÚ ×ÖÊý
-String path = request.getContextPath(); // ÄÃµ½WebApplicaitonÂ·¾¶-BBS
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<% //GB18030å¤§äºŽGBKå¤§äºŽGB2312 åŒ…å«çš„å­—ç¬¦å¤§äºŽ å­—æ•°
+String path = request.getContextPath(); // æ‹¿åˆ°WebApplicaitonè·¯å¾„-BBS
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %> 
 
@@ -9,8 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <!--base±êÇ© »ùÂ·¾¶  -->
-    <title>µÚÒ»¸öMyEclipseµÄJSP</title>
+    <!--baseæ ‡ç­¾ åŸºè·¯å¾„  -->
+    <title>ç¬¬ä¸€ä¸ªMyEclipseçš„JSP</title>
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">    
@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     This is my JSP page. <br>
-    <a href ="aaa.html">aaa</a> <!--Ïàµ±ÓÚ»ùÁ¬½Ó http://127.0.0.1:8080/TestMyEclipse/aaa.html-->
+    <a href ="aaa.html">aaa</a> <!--ç›¸å½“äºŽåŸºè¿žæŽ¥ http://127.0.0.1:8080/TestMyEclipse/aaa.html-->
     <br>
   </body>
 </html>
