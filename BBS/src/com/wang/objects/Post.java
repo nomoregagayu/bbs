@@ -10,22 +10,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Post {
-	@Id
-	@GeneratedValue
-	private int postId;
-	private String author;
-	private String title;
-	private String content;
-	private Timestamp pdate;
+public class Post extends Article {
 	private int viewCount;
-
-	public int getPostId() {
-		return postId;
+	public Post() {
+		super();
 	}
-
-	public void setPostId(int postId) {
-		this.postId = postId;
+	public Post(String author, String title, String content, Timestamp pdate,
+			int viewCount) {
+		super(author, title, content, pdate);
+		this.viewCount = viewCount;
 	}
 
 	public int getViewCount() {
@@ -35,36 +28,5 @@ public class Post {
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
 	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public Timestamp getPdate() {
-		return pdate;
-	}
-
-	public void setPdate(Timestamp pdate) {
-		this.pdate = pdate;
-	}
+	
 }

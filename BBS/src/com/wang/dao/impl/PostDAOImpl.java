@@ -9,10 +9,11 @@ import com.wang.dao.PostDAO;
 import com.wang.objects.Post;
 
 public class PostDAOImpl implements PostDAO {
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Post> getPosts()  {
+	public List<Post> getPosts(int firstResult, int maxResult)  {
 		Session session = HibernateSessionFactory.getSession();
-		Query query = session.createQuery("select p from Post p");
+		Query query = session.createQuery("select p from Post p").setFirstResult(firstResult).setMaxResults(maxResult);
 		List<Post> list = null;
 		try {
 			list = query.list();
@@ -23,5 +24,11 @@ public class PostDAOImpl implements PostDAO {
 		}
 		return list;
 	}
-
+	@Override
+	public Integer getTotalCount() {
+		Session session = HibernateSessionFactory.getSession();
+		Query query = session.createQuery("select count (*) from Post p");
+		int count=((Number)query.iterate().next()).intValue();
+		return count;
+	}
 }

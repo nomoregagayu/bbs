@@ -11,8 +11,8 @@
 		<property name="connection.username">root</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="myeclipse.connection.profile">MySQL</property>
-		<mapping class="com.wang.objects.Post" />
-		<mapping class="com.wang.objects.Reply" />
+		<mapping resource="com/wang/objects/Post.hbm.xml" />
+    <mapping resource="com/wang/objects/Reply.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

@@ -1,14 +1,14 @@
 use bbs;
 DROP TABLE IF EXISTS reply;
 create table reply(
-replyId int primary key auto_increment,
+id int primary key auto_increment,
 pid int null,
 followId int,
 author varchar(20) not null,
 title varchar(235) not null,
 content text not null,
 pdate datetime not null,
-foreign key(pid) references post(postId)
+foreign key(pid) references post(id)
 );
 insert into reply values (null, 1, 1,'gagayu', '蚂蚁大战大象', '蚂蚁大战大象', now());
 insert into reply values (null, 1, 1,'gagayu',  '大象被打趴下了', '大象被打趴下了',now());

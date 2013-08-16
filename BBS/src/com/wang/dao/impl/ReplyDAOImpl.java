@@ -11,27 +11,28 @@ import org.hibernate.Session;
 import com.wang.dao.ReplyDAO;
 import com.wang.objects.Reply;
 
-public class ReplyDAOImpl implements ReplyDAO{
+public class ReplyDAOImpl implements ReplyDAO {
 	@Override
-	 public List<Reply> getReplys(int pid)  {
+	public List<Reply> getReplys(int pid) {
 
 		Session session = HibernateSessionFactory.getSession();
-		Query query = session.createQuery("select r from Reply r where pid ="
-				+ pid);
+		Query query = session.createQuery(
+				"select r from Reply r where pid =" + pid);
 		List<Reply> list = null;
 		try {
 			list = query.list();
 		} catch (Exception ex) {
-			System.out.println("error with getting posts");
+			System.out.println("error with getting replys");
 		} finally {
 		}
 		return list;
 
 	}
-@Override
-	 public void saveReply(int pid, String title, String content) {
+
+	@Override
+	public void saveReply(int pid, String title, String content) {
 		Timestamp stampDate = new Timestamp(System.currentTimeMillis());
-		Reply reply = new Reply( pid,1, "gagayu", title, content, stampDate );
+		Reply reply = new Reply(pid, 1, "gagayu", title, content, stampDate);
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
 		session.save(reply);

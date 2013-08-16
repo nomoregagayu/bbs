@@ -6,7 +6,10 @@ import com.wang.objects.Post;
 
 public interface PostDAO {
 
-	public List<Post> getPosts();
+
+	Integer getTotalCount();
+
+	List<Post> getPosts(int fistResult, int maxResult);
 
 
 }
