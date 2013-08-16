@@ -2,7 +2,9 @@ package com.wang.service.impl;
 
 import com.wang.dao.impl.PostDAOImpl;
 import com.wang.objects.Page;
+import com.wang.services.PageManager;
 import com.wang.util.Configuration;
+
 public class PageManagerImpl {
 	public Page getPage(String article, int currentPage) {
 		Page page = new Page();
@@ -11,22 +13,30 @@ public class PageManagerImpl {
 			int totalCount = postImpl.getTotalCount();
 			page.setTotalCount(totalCount);
 			page.setCurrentPage(currentPage);
+			//设置总页数
 			if (totalCount % 20 == 0) {
 				page.setTotalPage(totalCount / 20);
+			} else if (totalCount == 0) {
+				page.setTotalPage(1);
 			} else {
 				page.setTotalPage((totalCount / 20) + 1);
 			}
+			//是否有前页
 			if (currentPage == 1) {
-				page.setHasPre(false);
-			}else {
-				page.setHasPre(true);
+				page.setPrePage(1);
+			} else {
+				page.setPrePage(currentPage-1);
 			}
-			if(currentPage<page.getTotalPage()) {
-				page.setHasNext(true);
-			}else {
-				page.setHasNext(false);
+			//是否有后页
+			if (currentPage < page.getTotalPage()) {
+				page.setNextPage(currentPage+1);
+			} else {
+				page.setNextPage(currentPage);
 			}
-			page.setArticle(postImpl.getPosts((currentPage* Configuration.DEFAULT_PostMaxPage), Configuration.DEFAULT_PostMaxPage));
+			//获取页中的帖子
+			page.setArticle(postImpl.getPosts(
+					((currentPage-1) * Configuration.DEFAULT_POSTMAXPAGE),
+					Configuration.DEFAULT_POSTMAXPAGE));
 		}
 		return page;
 
