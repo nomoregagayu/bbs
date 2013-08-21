@@ -13,7 +13,7 @@ public class PostDAOImpl implements PostDAO {
 	@Override
 	public List<Post> getPosts(int firstResult, int maxResult)  {
 		Session session = HibernateSessionFactory.getSession();
-		Query query = session.createQuery("select p from Post p").setFirstResult(firstResult).setMaxResults(maxResult);
+		Query query = session.createQuery("from Post").setFirstResult(firstResult).setMaxResults(maxResult);
 		List<Post> list = null;
 		try {
 			list = query.list();

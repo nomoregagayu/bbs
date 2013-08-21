@@ -3,33 +3,35 @@ package com.wang.objects;
 import java.sql.Timestamp;
 
 public abstract class Article {
-	private Integer id;
-		private String author;
+	private int id;
+		private int userId;
 	private String title;
 	private String content;
 	private Timestamp pdate;
+	private User user;
 	
+		public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Article() {
 		super();
 	}
-	public Article(String author, String title, String content, Timestamp pdate) {
+	public Article(Integer userId, String title, String content, Timestamp pdate) {
 		super();
-		this.author = author;
+		this.userId = userId;
 		this.title = title;
 		this.content = content;
 		this.pdate = pdate;
 	}
-	public Integer getId() {
-		return id;
+	
+	public int getUserId() {
+		return userId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getAuthor() {
-		return author;
-	}
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public String getTitle() {
 		return title;
@@ -49,5 +51,12 @@ public abstract class Article {
 	public void setPdate(Timestamp pdate) {
 		this.pdate = pdate;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 
 }

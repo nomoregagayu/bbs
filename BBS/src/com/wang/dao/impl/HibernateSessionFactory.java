@@ -77,18 +77,18 @@ public class HibernateSessionFactory
      */
     public static void rebuildSessionFactory()
     {
-	try
-	{
-	    configuration.configure();
-	    serviceRegistry = new ServiceRegistryBuilder().applySettings(
-		    configuration.getProperties()).buildServiceRegistry();
-	    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-	}
-	catch (Exception e)
-	{
-	    System.err.println("%%%% Error Creating SessionFactory %%%%");
-	    e.printStackTrace();
-	}
+//	try
+//	{
+//	    configuration.configure();
+//	    serviceRegistry = new ServiceRegistryBuilder().applySettings(
+//		    configuration.getProperties()).buildServiceRegistry();
+//	    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+//	}
+//	catch (Exception e)
+//	{
+//	    System.err.println("%%%% Error Creating SessionFactory %%%%");
+//	    e.printStackTrace();
+//	}
     }
 
     /**

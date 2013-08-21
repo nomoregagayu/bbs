@@ -6,30 +6,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
+import org.junit.Ignore;
+
 public class Reply extends Article {
-	private int pid;
 	private int followId;
+	private int postId;
+	private Post post;
 	public Reply() {
 		super();
 
 	}
-	public Reply(int pid, int followId, String author, String title,
-			String content, Timestamp stampDate) {
-		super(author, title, content, stampDate);
-		this.pid = pid;
+	public Reply(int postId, int followId, int userId, String title,
+			String content, Timestamp pdate) {
+		super(userId, title, content, pdate);
+		this.postId = postId;
 		this.followId = followId;
 	}
 
-	public int getPid() {
-		return pid;
+	
+	public int getPostId() {
+		return postId;
 	}
-
-	public void setPid(int pid) {
-		this.pid = pid;
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
-
-	public int getFollowId() {
+		public int getFollowId() {
 		return followId;
 	}
 
@@ -37,4 +38,11 @@ public class Reply extends Article {
 		this.followId = followId;
 	}
 
+	public Post getPost() {
+		return post;
+	}
+	//many-to-one
+	public void setPost(Post post) {
+		this.post = post;
+	}
 }

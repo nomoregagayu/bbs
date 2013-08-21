@@ -13,6 +13,7 @@
 		<property name="myeclipse.connection.profile">MySQL</property>
 		<mapping resource="com/wang/objects/Post.hbm.xml" />
     <mapping resource="com/wang/objects/Reply.hbm.xml" />
+    <mapping resource="com/wang/objects/User.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

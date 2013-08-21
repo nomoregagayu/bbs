@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%
 response.setContentType("text/html;charset=UTF-8"); 
 request.setCharacterEncoding("UTF-8");
@@ -10,15 +10,34 @@ request.setCharacterEncoding("UTF-8");
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Java|Java世界_中文论坛|ChinaJavaWorld技术论坛 :
 	初学java遇一难题！！望大家能帮忙一下 ...</title>
-<meta http-equiv="content-type" content="text/html; charset=GBK">
 <link rel="stylesheet" type="text/css" href="images/style.css"
 	title="Integrated Styles">
 <script language="JavaScript" type="text/javascript"
 	src="images/global.js"></script>
 <link rel="alternate" type="application/rss+xml" title="RSS"
 	href="http://bbs.chinajavaworld.com/rss/rssmessages.jspa?threadID=744236">
+	<!-- kindeditor  -->
+	<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
+    <script charset="utf-8" src="kindeditor/kindeditor-min.js"></script>
+    <script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+    <script>
+      var editor;
+      KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="content"]', {
+          resizeType : 1,
+          allowPreviewEmoticons : false,
+          allowImageUpload : false,
+          items : [
+            'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+            'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+            'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+        });
+      });
+    </script>
+    <!--kindeditor finish  -->
 </head>
 <body>
 	<table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -73,7 +92,7 @@ request.setCharacterEncoding("UTF-8");
 									<!--form基本都是post方法  -->
 									<input type="hidden" name="pid" value="<%=pid%>"> 标题:
 									<input type="text" name="title"><br> 内容:
-									<textarea name="content" rows="10" cols="40"></textarea>
+									<textarea name="content" style="width:700px;height:200px;visibility:hidden;"></textarea>
 									<br> <input type="submit" value="submit">
 								</form>
 							</div>

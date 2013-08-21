@@ -1,11 +1,12 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
-<%@ page import="com.wang.objects.*,com.wang.dao.impl.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
+<%@ page import="com.wang.objects.*,java.util.*,com.wang.dao.impl.*, java.text.SimpleDateFormat;"%>
+
 <%
 	String strId = request.getParameter("pid");
-	//如果后面放到前面 空指针错
 	if (strId == null || strId.trim().equals("")) {
+	  //strId要放前面，如果是null会报错
 		out.println("Error ID!");
-		//返回当前函数,不再往下执行
+		//return停止输出
 		return;
 	}
 	int pid = 0;
@@ -17,16 +18,16 @@
 
 	List<Reply> replys = new ReplyDAOImpl().getReplys(pid);
 	if (replys == null) {
-		out.println("你寻找的帖子不存在");
+		out.println("reply is null");
 		return;
 	}
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
+<!-- dreamweaver 编译-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 <head>
-<title>Java|Java世界_中文论坛|ChinaJavaWorld技术论坛 :
-	初学java遇一难题！！望大家能帮忙一下 ...</title>
-<meta http-equiv="content-type" content="text/html; charset=GBK">
+<title>Untitled Document</title>
 <link rel="stylesheet" type="text/css" href="images/style.css"
 	title="Integrated Styles">
 <script language="JavaScript" type="text/javascript"
@@ -38,17 +39,11 @@
 	<table border="0" cellpadding="0" cellspacing="0" width="100%">
 		<tbody>
 			<tr>
-				<td width="140"><a
-					href="http://bbs.chinajavaworld.com/index.jspa"><img
-						src="images/header-left.gif"
-						alt="Java|Java世界_中文论坛|ChinaJavaWorld技术论坛" border="0"> </a>
-				</td>
 				<td><img src="images/header-stretch.gif" alt="" border="0"
 					height="57" width="100%">
 				</td>
 				<td width="1%"><img src="images/header-right.gif" alt=""
-					border="0">
-				</td>
+					border="0"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -58,13 +53,13 @@
 			<tbody>
 				<tr valign="top">
 					<td width="99%"><p class="jive-breadcrumbs">
-							<a href="http://bbs.chinajavaworld.com/index.jspa">首页</a> &#187;
+							<a href="http://bbs.chinajavaworld.com/index.jspa">asdasdasd</a> &#187;
 							<a
-								href="http://bbs.chinajavaworld.com/forumindex.jspa?categoryID=1">ChinaJavaWorld技术论坛|Java世界_中文论坛</a>
+								href="http://bbs.chinajavaworld.com/forumindex.jspa?categoryID=1">ChinaJavaWorld</a>
 							&#187; <a
 								href="http://bbs.chinajavaworld.com/category.jspa?categoryID=2">Java
 								2 Platform, Standard Edition (J2SE)</a> &#187; <a
-								href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=0">Java语言*初级版</a>
+								href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=0">laterrr</a>
 						</p>
 						<p class="jive-page-title">&nbsp<%=replys.get(0).getTitle() %></p>
 					</td>
@@ -79,11 +74,11 @@
 					<tr>
 						<td class="jive-icon"><a
 							href="http://bbs.chinajavaworld.com/post%21reply.jspa?threadID=744236"><img
-								src="images/reply-16x16.gif" alt="回复本主题" border="0" height="16"
+								src="images/reply-16x16.gif" alt="回复帖子" border="0" height="16"
 								width="16"> </a>
 						</td>
 						<td class="jive-icon-label"><a id="jive-reply-thread"
-							href="reply.jsp?pid=<%=pid%>&title=<%=replys.get(0).getTitle() %>">回复本主题</a>
+							href="reply.jsp?pid=<%=pid%>&title=<%=replys.get(0).getTitle() %>">回复帖子</a>
 						</td>
 					</tr>
 				</tbody>
@@ -97,16 +92,17 @@
 							<div class="jive-message-list">
 								<div class="jive-table">
 									<div class="jive-messagebox">
-										<!--reply在这下面  -->
+										<!--reply开始  -->
 										<%
 											for (int i = 0; i < replys.size(); i++) {
 										%>
+										<!--个人开始  -->
 										<table summary="Message" border="0" cellpadding="0"
 											cellspacing="0" width="100%">
 											<tbody>
 												<tr id="jive-message-780144" class="jive-odd" valign="top">
 													<td class="jive-first" width="1%">
-														<!-- 个人信息的table -->
+														<!-- reply table -->
 														<table border="0" cellpadding="0" cellspacing="0"
 															width="150">
 															<tbody>
@@ -118,68 +114,60 @@
 																					<td style="padding: 0px;" width="1%"><nobr>
 																							<a
 																								href="http://bbs.chinajavaworld.com/profile.jspa?userID=215489"
-																								title="诺曼底客">诺曼底客</a>
+																								title="<%=replys.get(i).getUser().getName() %>"><%=replys.get(i).getUser().getName() %></a>
 																						</nobr></td>
-																					<td style="padding: 0px;" width="99%"><img
-																						class="jive-status-level-image"
-																						src="images/level3.gif" title="世界新手" alt=""
-																						border="0"><br></td>
 																				</tr>
 																			</tbody>
 																		</table> <img class="jive-avatar"
 																		src="images/avatar-display.png" alt="" border="0">
 																		<br> <br> <span class="jive-description">
-																			发表: 34 <br> 点数: 100<br> 注册: 07-5-10 <br>
-																			<a href="http://blog.chinajavaworld.com/u/215489"
-																			target="_blank"><font color="red">访问我的Blog</font>
-																		</a> </span></td>
+																			发表: <%=replys.get(i).getUser().getPosted() %> <br> 等级: <%=replys.get(i).getUser().getCredit() %><br> 注册时间: <%= (replys.get(i).getUser().getRtime().getYear()+1900)+"/"+(replys.get(i).getUser().getRtime().getMonth()+1)+"/"+replys.get(i).getUser().getRtime().getDate() %> <br>
+																			 </span></td>
 																</tr>
 															</tbody>
-														</table> <!--个人信息table结束--></td>
+														</table> <!--个人结束--></td>
 													<td class="jive-last" width="99%"><table border="0"
 															cellpadding="0" cellspacing="0" width="100%">
 															<tbody>
 																<tr valign="top">
 																	<td width="1%"></td>
-																	<td width="97%"><span class="jive-subject"><%=replys.get(i).getTitle() %>
+																	<td width="91%"><span class="jive-subject"><%=replys.get(i).getTitle() %>
 																			</span></td>
 																	<td class="jive-rating-buttons" nowrap="nowrap"
 																		width="1%"></td>
-																	<td width="1%"><div class="jive-buttons">
+																	<td width="7%"><div class="jive-buttons">
 																			<table border="0" cellpadding="0" cellspacing="0">
 																				<tbody>
-																					<tr>
-																						<td>&nbsp;</td>
-																						<td class="jive-icon"><a
+																					<tr align="right" >
+																						<td width="200000">&nbsp;</td>
+																						<td width="20" align="right" class="jive-icon"><a
 																							href="http://bbs.chinajavaworld.com/post%21reply.jspa?messageID=780144"
-																							title="回复本主题"><img
-																								src="images/reply-16x16.gif" alt="回复本主题"
+																							title="回复"><img
+																								src="images/reply-16x16.gif" alt="回复"
 																								border="0" height="16" width="16"> </a></td>
-																						<td class="jive-icon-label"><a
-																							href="reply.jsp?id=<%=1%>" title="回复本主题">回复</a></td>
-																					</tr>
+																						<td width="80"  align="right" class="jive-icon-label"><a
+																							href="reply.jsp?pid=<%=pid%>&title=<%=replys.get(0).getTitle() %>" title="回复">回复</a></td>
+																				</tr>
 																				</tbody>
 																			</table>
 																		</div>
 																	</td>
 																</tr>
 																<tr>
-																<td width="1%"></td>
+																<td width="1%" height="91"></td>
 																	<td colspan="4"
 																		style="border-top: 1px solid rgb(204, 204, 204);"><br>
-																		<%=replys.get(i).getContent()%> <br> <br></td>
-																</tr>
+																  <%=replys.get(i).getContent()%> <br> <br></td>
+															  </tr>
 																<tr>
+																<td width="1%"></td>
 																	<td colspan="4" style="font-size: 9pt;"><img
 																		src="images/sigline.gif"><br> <font
-																		color="#568ac2">学程序是枯燥的事情，愿大家在一起能从中得到快乐！</font> <br>
+																		color="#568ac2"><%=replys.get(i).getUser().getSign() %></font> <br>
 																	</td>
 																</tr>
 																<tr>
-																	<td colspan="4"
-																		style="border-top: 1px solid rgb(204, 204, 204); font-size: 9pt; table-layout: fixed;">
-																		·<a href="http://www.bjsxt.com"><font
-																			color="#666666">http://www.bjsxt.com</font> </a></td>
+																	
 																</tr>
 															</tbody>
 														</table>
@@ -205,10 +193,10 @@
 														<tr>
 															<td><a
 																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20"><img
-																	src="images/arrow-left-16x16.gif" alt="返回到主题列表"
+																	src="images/arrow-left-16x16.gif" alt="返回主页"
 																	border="0" height="16" hspace="6" width="16"> </a></td>
 															<td><a
-																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20">返回到主题列表</a>
+																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20">返回主页</a>
 															</td>
 														</tr>
 													</tbody>

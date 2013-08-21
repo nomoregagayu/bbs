@@ -1,9 +1,9 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page language="java"  contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ page
 	import="java.sql.*, com.wang.objects.*, java.util.*,  org.hibernate.cfg.*,com.wang.dao.impl.*, com.wang.service.impl.*, com.wang.util.Configuration"%>
 <%
 	Integer pagingNumber = 8;
-	request.setCharacterEncoding("GB18030");
+	request.setCharacterEncoding("UTF-8");
 	//currentpage
 	Integer currentPage = 1;
 	if(request.getParameter("pageNumber")==null || request.getParameter("pageNumber").trim().equals("")) {
@@ -25,8 +25,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Java|Java世界_中文论坛|ChinaJavaWorld技术论坛 : Java语言*初级版</title>
-<meta http-equiv="content-type" content="text/html; charset=GBK">
+
 <link rel="stylesheet" type="text/css" href="images/style.css"
 	title="Integrated Styles">
 <script language="JavaScript" type="text/javascript"
@@ -46,8 +47,7 @@
 						alt="Java|Java世界_中文论坛|ChinaJavaWorld技术论坛" border="0"> </a></td>
 				<td><img src="images/header-stretch.gif" alt="" border="0"
 					height="57" width="100%"></td>
-				<td width="1%"><img src="images/header-right.gif" alt=""
-					border="0"></td>
+				<td width="1%"><div style="background-image:url(images/header-right.gif);height:57px;width:200px"></a><a href="javascript:" onClick="top.location.href='login.jsp'" style="font-size:14px"><U>登录</U></a><a onClick="" style="font-size:14px"><U> 注册</U></a><a onClick="" style="font-size:14px"><U> 登出</U></a>  </div> </td>
 			</tr>
 		</tbody>
 	</table>
