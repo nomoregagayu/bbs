@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import com.wang.dao.UserDAO;
 import com.wang.models.Reply;
 import com.wang.models.User;
+import com.wang.util.HibernateSessionFactory;
 
 public class UserDAOImpl implements UserDAO {
 	@Override

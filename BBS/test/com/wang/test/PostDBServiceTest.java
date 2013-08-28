@@ -7,6 +7,7 @@ import org.junit.Test;
 import com.wang.dao.impl.PostDAOImpl;
 import com.wang.dao.impl.ReplyDAOImpl;
 import com.wang.dao.impl.UserDAOImpl;
+import com.wang.models.Page;
 import com.wang.models.Reply;
 import com.wang.service.impl.PageManagerImpl;
 
@@ -25,8 +26,9 @@ public class PostDBServiceTest {
 	}
 	@Test
 	public void testPageManager() {
-		PageManagerImpl pageManager = new PageManagerImpl();
-		System.out.println(pageManager.getPage("Post", 1).getArticle().get(0).getTitle());
+		Page pageDetail = new PageManagerImpl().getPage("Post", 2);
+		System.out.println(pageDetail.getArticle().get(0).getContent());
+		System.out.println(pageDetail.getNextPage());
 	}
 	@Test
 	public void testUser() {

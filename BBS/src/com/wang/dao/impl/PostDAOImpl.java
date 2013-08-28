@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 import com.wang.dao.PostDAO;
 import com.wang.models.Post;
+import com.wang.util.HibernateSessionFactory;
 
 public class PostDAOImpl implements PostDAO {
 	@SuppressWarnings("unchecked")

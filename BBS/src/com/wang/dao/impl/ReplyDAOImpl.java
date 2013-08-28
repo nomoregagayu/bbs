@@ -10,6 +10,7 @@ import com.wang.dao.ReplyDAO;
 import com.wang.models.Post;
 import com.wang.models.Reply;
 import com.wang.models.User;
+import com.wang.util.HibernateSessionFactory;
 
 public class ReplyDAOImpl implements ReplyDAO {
 	@Override

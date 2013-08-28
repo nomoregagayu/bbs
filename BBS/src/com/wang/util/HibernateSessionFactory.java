@@ -1,4 +1,4 @@
-package com.wang.dao.impl;
+package com.wang.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

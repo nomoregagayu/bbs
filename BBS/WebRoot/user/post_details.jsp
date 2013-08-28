@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ page import="com.wang.models.*,java.util.*,com.wang.dao.impl.*, java.text.SimpleDateFormat;"%>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 	String strId = request.getParameter("pid");
 	if (strId == null || strId.trim().equals("")) {
@@ -37,7 +37,7 @@
 	href="http://bbs.chinajavaworld.com/rss/rssmessages.jspa?threadID=744236">
 </head>
 <body>
-	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
 		<tbody>
 			<tr>
 				<td><img src="images/header-stretch.gif" alt="" border="0"

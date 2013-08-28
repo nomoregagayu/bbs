@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <% //GB18030大于GBK大于GB2312 包含的字符大于 字数
-String path = request.getContextPath(); // 拿到WebApplicaiton路径-BBS
+String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %> 
 
@@ -22,8 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    index <br>
-    <a href ="post.jsp">aaa</a> <!--相当于基连接 http://127.0.0.1:8080/TestMyEclipse/aaa.html-->
+     <br>
+    <a href ="user/Post_list">posts</a> <!--相当于基连接 http://127.0.0.1:8080/TestMyEclipse/post.jsp-->
     <br>
   </body>
 </html>

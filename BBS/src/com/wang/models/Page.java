@@ -8,6 +8,13 @@ public class Page {
 	private int prePage;
 	private int totalPage;
 	private int totalCount;
+	private int pageBar =8;
+	public int getPageBar() {
+		return pageBar;
+	}
+	public void setPageBar(int pageBar) {
+		this.pageBar = pageBar;
+	}
 	private List<? extends Article> article;
 		public Page() {
 		super();
