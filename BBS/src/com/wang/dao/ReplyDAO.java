@@ -6,9 +6,12 @@ import com.wang.models.Reply;
 
 public interface ReplyDAO {
 
-	List<Reply> getReplys(int pid);
 
 	void saveReply(int pid, String title, String content);
+
+	Integer getTotalCount();
+
+	List<Reply> getReplys(int pid, int firstResult, int maxResult);
 
 
 }

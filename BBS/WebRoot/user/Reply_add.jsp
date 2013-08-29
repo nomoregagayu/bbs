@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
-<%@ page import="com.wang.models.*,com.wang.dao.impl.*"%>
+<%@ page import="com.wang.models.*,com.wang.dao.impl.*,java.util.*,  com.opensymphony.xwork2.ActionContext" %>
 <%
-
-  request.setCharacterEncoding("UTF-8");
-  Integer pid = Integer.parseInt(request.getParameter("pid"));
-  
-  String title = request.getParameter("title");
-  String content = request.getParameter("content");
-    new ReplyDAOImpl().saveReply(pid, title, content);
+String path = request.getContextPath(); // 拿到WebApplicaiton路径-BBS
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+request.setCharacterEncoding("UTF-8");
+Page pageDetail = (Page)request.getAttribute("page");
+ActionContext context=ActionContext.getContext();  
+Map  parameterMap=context.getParameters();  
+String[] pid = (String[])parameterMap.get("reply.postId");
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
+<base href="<%=basePath%>">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <body>
 
@@ -33,10 +34,10 @@ function delayURL(url) {
 </script>
   <span id ="time">3 </span>秒钟后自动跳转,如果不跳转，点击以下连接
   <script type="text/javascript">
-  delayURL("post_details.jsp?pid=<%=pid%>");
+  delayURL("user/Reply_list?reply.postId=<%=pid[0]%>");
   </script>
   <!-- Place this in the 'body' section -->
   <a href="javascript:"
-    onClick="top.location.href='post_details.jsp?pid=<%=pid%>'">点击</a>
+    onClick="top.location.href='user/Reply_list?reply.postId=<%=pid[0]%>'">点我点我点我</a>
 </body>
 </html>

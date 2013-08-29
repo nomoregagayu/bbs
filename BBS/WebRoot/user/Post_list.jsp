@@ -1,6 +1,7 @@
 <%@ page language="java"  contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ page
   import="java.sql.*,com.wang.models.*, java.util.*,  org.hibernate.cfg.*,com.wang.dao.impl.*, com.wang.service.impl.*, com.wang.util.Configuration"%>
+  <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath(); // 拿到WebApplicaiton路径-BBS
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,7 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>"><!--WebRoot的相对路径  -->
-
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Java|Java世界_中文论坛|ChinaJavaWorld技术论坛 : Java语言*初级版</title>
 
@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             alt="Java|Java世界_中文论坛|ChinaJavaWorld技术论坛" border="0"> </a></td>
         <td><img src="user/images/header-stretch.gif" alt="" border="0"
           height="57" width="100%"></td>
-        <td width="1%"><div style="background-image:url(user/images/header-right.gif);height:57px;width:200px"></a><a href="javascript:" onClick="top.location.href='login.jsp'" style="font-size:14px"><U>登录</U></a><a onClick="" style="font-size:14px"><U> 注册</U></a><a onClick="" style="font-size:14px"><U> 登出</U></a>  </div> </td>
+        <td width="1%"><div style="background-image:url(user/images/header-right.gif);height:57px;width:200px"></a><a href="javascript:" onClick="top.location.href='user/Login_input'" style="font-size:14px"><U>登录</U></a><a onClick="" style="font-size:14px"><U> 注册</U></a><a onClick="" style="font-size:14px"><U> 登出</U></a>  </div> </td>
       </tr>
     </tbody>
   </table>
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tr valign="top">
           <td><span class="nobreak"> 总页数: <%=pageDetail.getTotalPage()%>
               - <span class="jive-paginator"> [ <a
-                href=user/Post_list?page.currentPage<%=pageDetail.getPrePage() %>>上一页</a>
+                href=user/Post_list?page.currentPage=<%=pageDetail.getPrePage() %>>上一页</a>
                 | <%
             if (pageDetail.getTotalPage() < pagingNumber){
                         for(int i =1;i<=pageDetail.getTotalPage();i++){
@@ -142,7 +142,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <td nowrap="nowrap" width="1%">&nbsp; &nbsp;</td>
                       <td class="jive-thread-name" width="95%"><a
                         id="jive-thread-1"
-                        href="post_details.jsp?pid=<%=posts.get(i).getId()%>"> <%--并且包括ID号--%><%=posts.get(i).getTitle()%></a>
+                        href="user/Reply_list?reply.postId=<%=posts.get(i).getId()%>"> <%--并且包括ID号--%><%=posts.get(i).getTitle()%></a>
                       </td>
                       <td class="jive-author" nowrap="nowrap" width="1%"><span
                         class=""> <a

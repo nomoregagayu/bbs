@@ -14,11 +14,11 @@ import com.wang.util.HibernateSessionFactory;
 
 public class ReplyDAOImpl implements ReplyDAO {
 	@Override
-	public List<Reply> getReplys(int pid) {
+	public List<Reply> getReplys(int pid,int firstResult, int maxResult) {
 
 		Session session = HibernateSessionFactory.getSession();
 		Query query = session
-				.createQuery("select r from Reply r where postId =" + pid);
+				.createQuery("select r from Reply r where postId =" + pid).setFirstResult(firstResult).setMaxResults(maxResult);
 		List<Reply> list = null;
 		try {
 			list = query.list();
@@ -48,4 +48,12 @@ public class ReplyDAOImpl implements ReplyDAO {
 		session.getTransaction().commit();
 		HibernateSessionFactory.closeSession();
 	}
+	@Override
+	public Integer getTotalCount() {
+		Session session = HibernateSessionFactory.getSession();
+		Query query = session.createQuery("select count (*) from Reply r");
+		int count=((Number)query.iterate().next()).intValue();
+		return count;
+	}
+
 }

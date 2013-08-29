@@ -2,6 +2,7 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<constant name="struts.devMode" value="true"></constant>
+	 <constant name="struts.i18n.encoding" value="UTF-8"></constant> 
 	<package name="default" extends="struts-default" namespace="/">
     <default-action-ref name="index"></default-action-ref>
 		<action name="index">
@@ -10,7 +11,11 @@
 	</package>
 	<package name="user" extends="struts-default" namespace="/user">
 	   <action name="*_*" class="com.wang.actions.{1}Action" method="{2}">
-	     <result>/user/{1}_{2}.jsp</result>
+	     <result type="dispatcher">/user/{1}_{2}.jsp </result>
+	   </action>
+	   <action name="Login_verify" class="com.wang.actions.LoginAction" method="verify">
+	     <result name="success">/user/Login_success.jsp</result>
+	     <result name="error">/user/Login_input.jsp</result>
 	   </action>
 	</package>
 </struts>    

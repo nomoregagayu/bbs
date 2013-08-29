@@ -1,38 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
-<%@ page import="com.wang.models.*,java.util.*,com.wang.dao.impl.*, java.text.SimpleDateFormat;"%>
+<%@ page import="com.wang.models.*,java.util.*,com.wang.dao.impl.*, java.text.SimpleDateFormat,  com.opensymphony.xwork2.ActionContext"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
-	String strId = request.getParameter("pid");
-	if (strId == null || strId.trim().equals("")) {
-	  //strId要放前面，如果是null会报错
-		out.println("Error ID!");
-		//return停止输出
-		
-		return;
-	}
-	int pid = 0;
-	try {
-		pid = Integer.parseInt(strId);
-	} catch (NumberFormatException e) {
-		out.println("ErrorID not int");
-	}
-
-	List<Reply> replys = new ReplyDAOImpl().getReplys(pid);
-	if (replys == null) {
-		out.println("reply is null");
-		return;
-	}
+String path = request.getContextPath(); // 拿到WebApplicaiton路径-BBS
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+Page pageDetail = (Page)request.getAttribute("page");
+ActionContext context=ActionContext.getContext();  
+Map  parameterMap=context.getParameters();  
+String[] pid = (String[])parameterMap.get("reply.postId");
+//replys
+List<Reply> replys = null;
+try {
+	replys = (List<Reply>) pageDetail.getArticle();
+} catch (Exception ex) {
+  out.println(" Unchecked cast from List<post#1-of ? extends Article> to ");
+  return;
+}
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
+<base href="<%=basePath%>">
 <!-- dreamweaver 编译-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 <head>
 <title>Untitled Document</title>
-<link rel="stylesheet" type="text/css" href="images/style.css"
+<link rel="stylesheet" type="text/css" href="user/images/style.css"
 	title="Integrated Styles">
 <script language="JavaScript" type="text/javascript"
-	src="images/global.js"></script>
+	src="user/images/global.js"></script>
 <link rel="alternate" type="application/rss+xml" title="RSS"
 	href="http://bbs.chinajavaworld.com/rss/rssmessages.jspa?threadID=744236">
 </head>
@@ -40,10 +35,10 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 		<tbody>
 			<tr>
-				<td><img src="images/header-stretch.gif" alt="" border="0"
+				<td><img src="user/images/header-stretch.gif" alt="" border="0"
 					height="57" width="100%">
 				</td>
-				<td width="1%"><img src="images/header-right.gif" alt=""
+				<td width="1%"><img src="user/images/header-right.gif" alt=""
 					border="0"></td>
 			</tr>
 		</tbody>
@@ -75,11 +70,11 @@
 					<tr>
 						<td class="jive-icon"><a
 							href="http://bbs.chinajavaworld.com/post%21reply.jspa?threadID=744236"><img
-								src="images/reply-16x16.gif" alt="回复帖子" border="0" height="16"
+								src="user/images/reply-16x16.gif" alt="回复帖子" border="0" height="16"
 								width="16"> </a>
 						</td>
 						<td class="jive-icon-label"><a id="jive-reply-thread"
-							href="reply.jsp?pid=<%=pid%>&title=<%=replys.get(0).getTitle() %>">回复帖子</a>
+							href="reply.jsp?pid=<%=pid[0]%>&title=<%=replys.get(0).getTitle() %>">回复帖子</a>
 						</td>
 					</tr>
 				</tbody>
@@ -120,7 +115,7 @@
 																				</tr>
 																			</tbody>
 																		</table> <img class="jive-avatar"
-																		src="images/avatar-display.png" alt="" border="0">
+																		src="user/images/avatar-display.png" alt="" border="0">
 																		<br> <br> <span class="jive-description">
 																			发表: <%=replys.get(i).getUser().getPosted() %> <br> 等级: <%=replys.get(i).getUser().getCredit() %><br> 注册时间: <%= (replys.get(i).getUser().getRtime().getYear()+1900)+"/"+(replys.get(i).getUser().getRtime().getMonth()+1)+"/"+replys.get(i).getUser().getRtime().getDate() %> <br>
 																			 </span></td>
@@ -144,10 +139,10 @@
 																						<td width="20" align="right" class="jive-icon"><a
 																							href="http://bbs.chinajavaworld.com/post%21reply.jspa?messageID=780144"
 																							title="回复"><img
-																								src="images/reply-16x16.gif" alt="回复"
+																								src="user/images/reply-16x16.gif" alt="回复"
 																								border="0" height="16" width="16"> </a></td>
 																						<td width="80"  align="right" class="jive-icon-label"><a
-																							href="reply.jsp?pid=<%=pid%>&title=<%=replys.get(0).getTitle() %>" title="回复">回复</a></td>
+																							href="user/Reply_edit?reply.postId=<%=pid[0]%>&reply.title=<%=replys.get(i).getTitle() %>" title="回复"> 回复</a></td>
 																				</tr>
 																				</tbody>
 																			</table>
@@ -163,7 +158,7 @@
 																<tr>
 																<td width="1%"></td>
 																	<td colspan="4" style="font-size: 9pt;"><img
-																		src="images/sigline.gif"><br> <font
+																		src="user/images/sigline.gif"><br> <font
 																		color="#568ac2"><%=replys.get(i).getUser().getSign() %></font> <br>
 																	</td>
 																</tr>
@@ -194,7 +189,7 @@
 														<tr>
 															<td><a
 																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20"><img
-																	src="images/arrow-left-16x16.gif" alt="返回主页"
+																	src="user/images/arrow-left-16x16.gif" alt="返回主页"
 																	border="0" height="16" hspace="6" width="16"> </a></td>
 															<td><a
 																href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20">返回主页</a>
