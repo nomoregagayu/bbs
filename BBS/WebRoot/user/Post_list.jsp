@@ -38,10 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <tbody>
       <tr>
-        <td width="140"><a
-          href="http://bbs.chinajavaworld.com/index.jspa"><img
-            src="user/images/header-left.gif"
-            alt="Java|Java世界_中文论坛|ChinaJavaWorld技术论坛" border="0"> </a></td>
+
         <td><img src="user/images/header-stretch.gif" alt="" border="0"
           height="57" width="100%"></td>
         <td width="1%"><div style="background-image:url(user/images/header-right.gif);height:57px;width:200px"></a><a href="javascript:" onClick="top.location.href='user/Login_input'" style="font-size:14px"><U>登录</U></a><a onClick="" style="font-size:14px"><U> 注册</U></a><a onClick="" style="font-size:14px"><U> 登出</U></a>  </div> </td>
