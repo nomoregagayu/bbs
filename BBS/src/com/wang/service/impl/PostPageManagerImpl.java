@@ -1,29 +1,28 @@
 package com.wang.service.impl;
 
-import com.wang.dao.impl.PostDAOImpl;
-import com.wang.dao.impl.ReplyDAOImpl;
-import com.wang.models.Page;
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Component;
+
+import com.wang.dao.PostDAO;
 import com.wang.services.PageManager;
 import com.wang.util.Configuration;
+import com.wang.web.dto.Page;
 
 //Code refactoring
+@Component("postPageManagerImpl")
 public class PostPageManagerImpl implements PageManager {
-	private static PostPageManagerImpl instance;
-
-	private PostPageManagerImpl() {
+	private PostDAO postDAOImpl;
+	public PostDAO getPostDAOImpl() {
+		return postDAOImpl;
 	}
-
-	public static synchronized PostPageManagerImpl getInstance() {
-		if (instance == null) {
-			instance = new PostPageManagerImpl();
-		}
-		return instance;
+	@Resource(name="postDAOImpl")
+	public void setPostDAOImpl(PostDAO postDAOImpl) {
+		this.postDAOImpl = postDAOImpl;
 	}
-
 	public Page list(int currentPage) {
 		Page page = new Page();
-		PostDAOImpl postImpl = new PostDAOImpl();
-		int totalCount = postImpl.getTotalCount();
+		int totalCount = postDAOImpl.getTotalCount();
 		page.setTotalCount(totalCount);
 		page.setCurrentPage(currentPage);
 		// 设置总页数
@@ -47,10 +46,20 @@ public class PostPageManagerImpl implements PageManager {
 			page.setNextPage(currentPage);
 		}
 		// 获取页中的帖子
-		page.setArticle(postImpl.getPosts(
+		page.setArticle(postDAOImpl.getPosts(
 				((currentPage - 1) * Configuration.DEFAULT_POSTMAXPAGE),
 				Configuration.DEFAULT_POSTMAXPAGE));
 		return page;
 
+	}
+	@Override
+	public Page list(int pid, int currentPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void add(Integer pid, String title, String content) {
+		// TODO Auto-generated method stub
+		
 	}
 }

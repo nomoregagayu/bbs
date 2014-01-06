@@ -1,25 +1,28 @@
 package com.wang.service.impl;
 
-import com.wang.dao.impl.UserDAOImpl;
+import javax.annotation.Resource;
 
-public class UserManagerImpl {
-	UserDAOImpl userDAO;
-	private static UserManagerImpl instance;
+import org.springframework.stereotype.Component;
 
-	private UserManagerImpl() {
-		userDAO = new UserDAOImpl();
+import com.wang.dao.UserDAO;
+import com.wang.services.UserManager;
+
+@Component("userManagerImpl")
+public class UserManagerImpl implements UserManager {
+	UserDAO userDAOImpl;
+
+	public UserDAO getUserDAOImpl() {
+		return userDAOImpl;
 	}
 
-	public static synchronized UserManagerImpl getInstance() {
-		if (instance == null) {
-			instance = new UserManagerImpl();
-		}
-		return instance;
+	@Resource(name = "userDAOImpl")
+	public void setUserDAOImpl(UserDAO userDAOImpl) {
+		this.userDAOImpl = userDAOImpl;
 	}
 
 	public boolean validateUser(String userName, String password) {
 
-		if (userDAO.getUser(userName, password).isEmpty()) {
+		if (userDAOImpl.getUser(userName, password).isEmpty()) {
 			return false;
 		} else {
 			return true;

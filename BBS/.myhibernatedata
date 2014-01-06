@@ -1,5 +1,5 @@
 #MyEclipse Hibernate Properties
-#Mon Aug 26 23:14:14 BST 2013
+#Fri Jan 03 02:09:00 CST 2014
 genVersionTag=false
 genAnnotations=false
 configFile=/asd/src/hibernate.cfg.xml

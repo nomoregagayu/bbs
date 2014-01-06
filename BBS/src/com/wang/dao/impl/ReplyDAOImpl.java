@@ -3,30 +3,40 @@ package com.wang.dao.impl;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 
 import com.wang.dao.ReplyDAO;
 import com.wang.models.Post;
 import com.wang.models.Reply;
 import com.wang.models.User;
 import com.wang.util.HibernateSessionFactory;
-
+@Component("replyDAOImpl")
 public class ReplyDAOImpl implements ReplyDAO {
-	@Override
-	public List<Reply> getReplys(int pid,int firstResult, int maxResult) {
+	SessionFactory sessionFactory;
 
-		Session session = HibernateSessionFactory.getSession();
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	@Resource
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	@Override
+	public List<Reply> getReplys(int pid, int firstResult, int maxResult) {
+
+		Session session = sessionFactory.getCurrentSession();
 		Query query = session
-				.createQuery("select r from Reply r where postId =" + pid).setFirstResult(firstResult).setMaxResults(maxResult);
+				.createQuery("select r from Reply r where postId =" + pid)
+				.setFirstResult(firstResult).setMaxResults(maxResult);
 		List<Reply> list = null;
-		try {
-			list = query.list();
-		} catch (Exception ex) {
-			System.out.println("error with getting replys");
-		} finally {
-			HibernateSessionFactory.closeSession();
-		}
+		list = query.list();
 		return list;
 
 	}
@@ -42,17 +52,15 @@ public class ReplyDAOImpl implements ReplyDAO {
 		Post post = new Post();
 		post.setId(1);
 		reply.setPost(post);
-		Session session = HibernateSessionFactory.getSession();
-		session.beginTransaction();
+		Session session = sessionFactory.getCurrentSession();
 		session.save(reply);
-		session.getTransaction().commit();
-		HibernateSessionFactory.closeSession();
 	}
+
 	@Override
 	public Integer getTotalCount() {
-		Session session = HibernateSessionFactory.getSession();
+		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("select count (*) from Reply r");
-		int count=((Number)query.iterate().next()).intValue();
+		int count = ((Number) query.iterate().next()).intValue();
 		return count;
 	}
 

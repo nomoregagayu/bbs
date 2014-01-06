@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
      <br>
-    <a href ="user/Post_list">Successful Login</a> <!--相当于基连接 http://127.0.0.1:8080/TestMyEclipse/post.jsp-->
+    <a href ="user/post_list">Successful Login</a> <!--相当于基连接 http://127.0.0.1:8080/TestMyEclipse/post.jsp-->
     <br>
   </body>
 </html>

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 
+
 public class Reply extends Article {
 	private int followId;
 	private int postId;

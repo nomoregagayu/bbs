@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
-<%@ page import="com.wang.models.*,com.wang.dao.impl.*,java.util.*,  com.opensymphony.xwork2.ActionContext" %>
+<%@ page import="com.wang.models.*,com.wang.web.dto.*,com.wang.dao.impl.*,java.util.*,  com.opensymphony.xwork2.ActionContext" %>
 <%
 String path = request.getContextPath(); // 拿到WebApplicaiton路径-BBS
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -34,10 +34,10 @@ function delayURL(url) {
 </script>
   <span id ="time">3 </span>秒钟后自动跳转,如果不跳转，点击以下连接
   <script type="text/javascript">
-  delayURL("user/Reply_list?reply.postId=<%=pid[0]%>");
+  delayURL("user/reply_list?reply.postId=<%=pid[0]%>");
   </script>
   <!-- Place this in the 'body' section -->
   <a href="javascript:"
-    onClick="top.location.href='user/Reply_list?reply.postId=<%=pid[0]%>'">点我点我点我</a>
+    onClick="top.location.href='user/reply_list?reply.postId=<%=pid[0]%>'">点我点我点我</a>
 </body>
 </html>

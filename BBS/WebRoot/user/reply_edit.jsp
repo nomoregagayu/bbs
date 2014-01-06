@@ -93,7 +93,7 @@ String[] title = (String[])parameterMap.get("reply.title");
                   <div class="jive-messagebox"></div>
                 </div>
                 <!--表单  -->
-                <form action="user/Reply_add" method="post">
+                <form action="user/reply_add" method="post">
                   <!--form基本都是post方法  -->
                   <input type="hidden" name="reply.postId" value="<%=pid[0]%>"> 标题:
                   <input type="text" name="reply.title"><br> 内容:

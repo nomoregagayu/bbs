@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
-<%@ page import="com.wang.models.*,java.util.*,com.wang.dao.impl.*, java.text.SimpleDateFormat,  com.opensymphony.xwork2.ActionContext"%>
+<%@ page import="com.wang.models.*,com.wang.web.dto.*,java.util.*,com.wang.dao.impl.*, java.text.SimpleDateFormat,  com.opensymphony.xwork2.ActionContext"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath(); // 拿到WebApplicaiton路径-BBS
@@ -142,8 +142,9 @@ try {
 																								src="user/images/reply-16x16.gif" alt="回复"
 																								border="0" height="16" width="16"> </a></td>
 																						<td width="80"  align="right" class="jive-icon-label"><a
-																							href="user/Reply_edit?reply.postId=<%=pid[0]%>&reply.title=<%=replys.get(i).getTitle() %>" title="回复"> 回复</a></td>
+																							href="user/reply_edit?reply.postId=<%=pid[0]%>&reply.title=<%=replys.get(i).getTitle() %>" title="回复"> 回复</a></td>
 																				</tr>
+																				
 																				</tbody>
 																			</table>
 																		</div>

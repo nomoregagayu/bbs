@@ -2,9 +2,10 @@ package com.wang.models;
 
 import java.sql.Timestamp;
 
+
 public abstract class Article {
 	private int id;
-		private int userId;
+	private int userId;
 	private String title;
 	private String content;
 	private Timestamp pdate;

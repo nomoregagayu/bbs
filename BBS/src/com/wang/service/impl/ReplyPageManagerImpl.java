@@ -1,35 +1,37 @@
 package com.wang.service.impl;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.wang.dao.ReplyDAO;
 import com.wang.dao.impl.ReplyDAOImpl;
-import com.wang.models.Page;
 import com.wang.services.PageManager;
 import com.wang.util.Configuration;
+import com.wang.web.dto.Page;
 
 //Code refactoring
-public class ReplyPageManagerImpl implements PageManager {
-	ReplyDAO replyImpl;
-	private static ReplyPageManagerImpl instance;
-
-	private ReplyPageManagerImpl() {
-		replyImpl = new ReplyDAOImpl();
+@Component("replyPageManagerImpl")
+public class ReplyPageManagerImpl implements PageManager  {
+	ReplyDAO replyDAOImpl;
+	
+	public ReplyDAO getReplyDAOImpl() {
+		return replyDAOImpl;
+	}
+	@Resource(name="replyDAOImpl")
+	public void setReplyDAOImpl(ReplyDAO replyDAOImpl) {
+		this.replyDAOImpl = replyDAOImpl;
 	}
 
-	public static synchronized ReplyPageManagerImpl getInstance() {
-		if (instance == null) {
-			instance = new ReplyPageManagerImpl();
-		}
-		return instance;
-	}
-
+	//事物管理 有spring来管理 默认required（如果有一个transaction用存在的 没有一个新的）readonly(提高性能 用只读连接)
 	public void add(Integer pid, String title, String content) {
-		replyImpl.saveReply(pid, title, content);
+		replyDAOImpl.saveReply(pid, title, content);
 	}
 
-	public Page list(Integer pid, int currentPage) {
+	public Page list(int pid, int currentPage) {
 		Page page = new Page();
-
-		int totalCount = replyImpl.getTotalCount();
+		int totalCount = replyDAOImpl.getTotalCount();
 		page.setTotalCount(totalCount);
 		page.setCurrentPage(currentPage);
 		// 设置总页数
@@ -53,10 +55,15 @@ public class ReplyPageManagerImpl implements PageManager {
 			page.setNextPage(currentPage);
 		}
 		// 获取页中的帖子
-		page.setArticle(replyImpl.getReplys(pid,
+		page.setArticle(replyDAOImpl.getReplys(pid,
 				((currentPage - 1) * Configuration.DEFAULT_POSTMAXPAGE),
 				Configuration.DEFAULT_POSTMAXPAGE));
 		return page;
+	}
+	@Override
+	public Page list(int currentPage) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

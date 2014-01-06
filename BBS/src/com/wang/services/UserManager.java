@@ -1,6 +1,6 @@
 package com.wang.services;
 
-import com.wang.dao.impl.UserDAOImpl;
 
-public class UserManager {
+public interface UserManager {
+	boolean validateUser(String userName, String password) ;
 }

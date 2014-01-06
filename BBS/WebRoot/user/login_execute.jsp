@@ -51,7 +51,7 @@ if(request.getAttribute("errors")!=null){
 			</a>
 		</div>
 		<div id="box">
-			<form  action="user/Login_verify" method="POST">
+			<form  action="user/login_verify" method="POST">
 				<!-- <p> 标签定义段落 -->
 				<p class="main">
 					<label>Username: </label> <input id="userName" name="user.name" />

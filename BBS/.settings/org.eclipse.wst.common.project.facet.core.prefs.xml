@@ -9,4 +9,11 @@
       <attribute name="provider-id" value="maven-lib-provider"/>
     </node>
   </facet>
+  <facet id="me.hibernate"/>
+  <facet id="jst.web.jstl"/>
+  <facet id="java"/>
+  <facet id="jst.web"/>
+  <facet id="maven"/>
+  <facet id="web.struts2"/>
+  <facet id="wst.jsdt.web"/>
 </root>

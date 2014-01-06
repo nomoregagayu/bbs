@@ -1,6 +1,8 @@
-package com.wang.models;
+package com.wang.web.dto;
 
 import java.util.List;
+
+import com.wang.models.Article;
 
 public class Page {
 	private int currentPage;

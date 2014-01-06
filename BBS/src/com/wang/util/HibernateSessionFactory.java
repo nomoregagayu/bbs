@@ -1,10 +1,14 @@
 package com.wang.util;
 
+import javax.annotation.Resource;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.springframework.stereotype.Component;
 
 /**
  * Configures and provides access to Hibernate sessions, tied to the current
@@ -21,28 +25,17 @@ public class HibernateSessionFactory
      * configuration file for the current session.
      */
     private static final ThreadLocal<Session> threadLocal = new ThreadLocal<Session>();
-    private static org.hibernate.SessionFactory sessionFactory;
+    public static org.hibernate.SessionFactory sessionFactory;
 
     private static Configuration configuration = new Configuration();
     private static ServiceRegistry serviceRegistry;
 
-    static
-    {
-	try
-	{
-	    configuration.configure();
-	    serviceRegistry = new ServiceRegistryBuilder().applySettings(
-		    configuration.getProperties()).buildServiceRegistry();
-	    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+    @Resource
+    public static void setSessionFactory(org.hibernate.SessionFactory sessionFactory) {
+		HibernateSessionFactory.sessionFactory = sessionFactory;
 	}
-	catch (Exception e)
-	{
-	    System.err.println("%%%% Error Creating SessionFactory %%%%");
-	    e.printStackTrace();
-	}
-    }
 
-    private HibernateSessionFactory()
+	private HibernateSessionFactory()
     {
     }
 

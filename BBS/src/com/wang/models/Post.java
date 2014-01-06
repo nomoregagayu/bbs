@@ -1,11 +1,15 @@
 package com.wang.models;
 
 import java.sql.Timestamp;
-
 import java.util.Set;
 
 
+
 public class Post extends Article {
+	private int userId;
+	private String title;
+	private String content;
+	private Timestamp pdate;
 	private int viewCount;
 	private Set<Reply> replies;
 

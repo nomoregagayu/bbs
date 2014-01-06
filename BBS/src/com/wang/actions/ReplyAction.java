@@ -1,19 +1,33 @@
 package com.wang.actions;
 
-import com.opensymphony.xwork2.ActionSupport;
-import com.wang.models.Page;
-import com.wang.models.Reply;
-import com.wang.service.impl.ReplyPageManagerImpl;
+import javax.annotation.Resource;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.wang.models.Reply;
+import com.wang.services.PageManager;
+import com.wang.web.dto.Page;
+@Component("reply_*")
+@Scope("prototype")
 public class ReplyAction extends ActionSupport {
 
 	Page page;
-	ReplyPageManagerImpl pageManager;
+	PageManager pageManager;
+
+	public PageManager getPageManager() {
+		return pageManager;
+	}
+	@Resource(name = "replyPageManagerImpl")
+	public void setPageManager(PageManager pageManager) {
+		this.pageManager = pageManager;
+	}
+
 	Reply reply;
 	public ReplyAction() {
 		reply = new Reply();
 		page = new Page();
-		pageManager= ReplyPageManagerImpl.getInstance();
 	}
 
 	public Page getPage() {
