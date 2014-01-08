@@ -31,6 +31,9 @@
         <property name="portrait" type="java.lang.String">
             <column name="portrait" />
         </property>
+        <property name="isActive" type="java.lang.Integer">
+            <column name="isActive" />
+        </property>
         <set name="replies" inverse="true">
             <key>
                 <column name="userId" />

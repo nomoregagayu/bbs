@@ -1,4 +1,4 @@
-package com.wang.service.impl;
+package com.wang.struts.services.impl;
 
 import javax.annotation.Resource;
 
@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.wang.dao.ReplyDAO;
 import com.wang.dao.impl.ReplyDAOImpl;
-import com.wang.services.PageManager;
+import com.wang.struts.services.PageManager;
 import com.wang.util.Configuration;
 import com.wang.web.dto.Page;
 

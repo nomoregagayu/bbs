@@ -58,4 +58,10 @@ public class UserDAOImpl implements UserDAO {
 			user.setRtime(stampDate);
 			session.save(user);
 	}
+	//以后添加功能
+	@Override
+	public void send(String userName) {
+		Session session = sessionFactory.getCurrentSession();
+		
+	}
 }

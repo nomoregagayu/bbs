@@ -1,4 +1,4 @@
-package com.wang.services;
+package com.wang.struts.services;
 
 import com.wang.web.dto.Page;
 

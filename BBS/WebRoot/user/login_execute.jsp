@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.wang.services.UserManager, java.util.*"%>
+<%@ page import="com.wang.struts.services.UserManager, java.util.*"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath(); // 拿到WebApplicaiton路径-BBS

@@ -1,6 +1,6 @@
 <%@ page language="java"  contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ page
-  import="java.sql.*,com.wang.models.*,com.wang.web.dto.*, java.util.*,  org.hibernate.cfg.*,com.wang.dao.impl.*, com.wang.service.impl.*, com.wang.util.Configuration"%>
+  import="java.sql.*,com.wang.models.*,com.wang.web.dto.*, java.util.*,  org.hibernate.cfg.*,com.wang.dao.impl.*,com.wang.struts.services.impl.*, com.wang.util.Configuration"%>
   <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath(); // 拿到WebApplicaiton路径-BBS

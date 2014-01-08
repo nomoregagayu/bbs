@@ -16,7 +16,14 @@ public  class User {
 	private String portrait;
 	private Set<Reply> replies;
 	private Set<Post> posts;
+	private int isActive;
 
+	public int getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(int isActive) {
+		this.isActive = isActive;
+	}
 	public String getName() {
 		return name;
 	}

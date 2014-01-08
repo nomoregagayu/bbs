@@ -11,6 +11,8 @@ create table user(
  sign text,
  credit int  Default 1,
  posted int Default  0,
- portrait char(255)
+ portrait char(255),
+ isActive int Default 0,
+ activeKey char(255)
 );
 insert  into user value(null, "gagayu","gagayu", now(), "楼主傻逼",1,0, null);

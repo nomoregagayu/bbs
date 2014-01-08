@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.wang.services.PageManager;
+import com.wang.struts.services.PageManager;
 import com.wang.web.dto.Page;
 
 @Component("post_*")

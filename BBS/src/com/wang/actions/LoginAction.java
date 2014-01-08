@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.wang.models.User;
-import com.wang.services.UserManager;
+import com.wang.struts.services.UserManager;
 @Component("login_*")
 //spring 默认scope 是单例模式
 //这样只会创建一个Action对象
