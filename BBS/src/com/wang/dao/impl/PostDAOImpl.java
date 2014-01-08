@@ -27,7 +27,6 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Post> getPosts(int firstResult, int maxResult) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from Post")
@@ -37,7 +36,6 @@ public class PostDAOImpl implements PostDAO {
 		return list;
 	}
 
-	@Override
 	public Integer getTotalCount() {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("select count (*) from Post p");

@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         <td><img src="user/images/header-stretch.gif" alt="" border="0"
           height="57" width="100%"></td>
-        <td width="1%"><div style="background-image:url(user/images/header-right.gif);height:57px;width:200px"></a><a href="javascript:" onClick="top.location.href='user/login_execute'" style="font-size:14px"><U>登录</U></a><a onClick="" style="font-size:14px"><U> 注册</U></a><a onClick="" style="font-size:14px"><U> 登出</U></a>  </div> </td>
+        <td width="1%"><div style="background-image:url(user/images/header-right.gif);height:57px;width:200px"></a><a href="javascript:" onClick="top.location.href='user/login_execute'" style="font-size:14px"><U>登录</U></a><a href="javascript:" onClick="top.location.href='user/reg_execute'" style="font-size:14px"><U> 注册</U></a><a onClick="" style="font-size:14px"><U> 登出</U></a>  </div> </td>
       </tr>
     </tbody>
   </table>

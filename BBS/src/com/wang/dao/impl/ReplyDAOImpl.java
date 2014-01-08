@@ -28,7 +28,6 @@ public class ReplyDAOImpl implements ReplyDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Override
 	public List<Reply> getReplys(int pid, int firstResult, int maxResult) {
 
 		Session session = sessionFactory.getCurrentSession();
@@ -41,7 +40,6 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	}
 
-	@Override
 	public void saveReply(int postId, String title, String content) {
 		Timestamp stampDate = new Timestamp(System.currentTimeMillis());
 		Reply reply = new Reply(postId, 1, 1, title, content, stampDate);
@@ -56,7 +54,6 @@ public class ReplyDAOImpl implements ReplyDAO {
 		session.save(reply);
 	}
 
-	@Override
 	public Integer getTotalCount() {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("select count (*) from Reply r");

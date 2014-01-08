@@ -3,8 +3,8 @@ package com.wang.test;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.wang.service.impl.ReplyPageManagerImpl;
 import com.wang.services.PageManager;
+import com.wang.services.UserManager;
 
 
 public class PostDBServiceTest {
@@ -32,6 +32,13 @@ public class PostDBServiceTest {
 		System.out.println(pageManager.list(1,1).getTotalCount());
 		
 		ctx.destroy();
+	}
+	@Test
+	public void testAddUser() {
+		ClassPathXmlApplicationContext ctx= new ClassPathXmlApplicationContext("application.xml");
+		UserManager userManager =(UserManager)ctx.getBean("userManagerImpl");
+		userManager.addUser("nihaome", "nihaome");
+
 	}
 
 }

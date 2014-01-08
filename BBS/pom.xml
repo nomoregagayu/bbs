@@ -11,6 +11,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+	<dependency>
+  <groupId>javassist</groupId>
+  <artifactId>javassist</artifactId>
+  <version>3.7.1.GA</version>
+</dependency>
+            
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>bean-validator</artifactId>

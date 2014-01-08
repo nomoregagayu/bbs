@@ -23,12 +23,12 @@ public class ReplyPageManagerImpl implements PageManager  {
 	public void setReplyDAOImpl(ReplyDAO replyDAOImpl) {
 		this.replyDAOImpl = replyDAOImpl;
 	}
-
+	@Override
 	//事物管理 有spring来管理 默认required（如果有一个transaction用存在的 没有一个新的）readonly(提高性能 用只读连接)
 	public void add(Integer pid, String title, String content) {
 		replyDAOImpl.saveReply(pid, title, content);
 	}
-
+	@Override
 	public Page list(int pid, int currentPage) {
 		Page page = new Page();
 		int totalCount = replyDAOImpl.getTotalCount();

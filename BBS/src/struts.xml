@@ -3,14 +3,14 @@
 <struts>
 	<constant name="struts.devMode" value="true"></constant>
 	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
-	 <!--homepage  -->
+	<!--homepage -->
 	<package name="default" extends="struts-default" namespace="/">
 		<default-action-ref name="index"></default-action-ref>
 		<action name="index">
 			<result>user/index.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="user" extends="struts-default" namespace="/user">
 		<action name="reply_*" class="com.wang.actions.ReplyAction"
 			method="{1}">
@@ -20,22 +20,23 @@
 			method="{1}">
 			<result type="dispatcher">/user/post_{1}.jsp </result>
 		</action>
-		
-    <action name="reg_verify" class="com.wang.actions.REGAction" method="verify">
-      <result name="success">/user/login_list.jsp</result>
-      <result name="error">/user/reg_execute.jsp</result>
-    </action>
-    <action name="reg_execute" class="com.wang.actions.REGAction">
-      <result name="success">/user/reg_execute.jsp</result>
-    </action>
-    
+ 
+		<action name="reg_add" class="com.wang.actions.REGAction"
+			method="add">
+			<result type="chain" name="success">post_list</result>
+			<result name="error">/user/reg_execute.jsp</result>
+		</action>
+		<action name="reg_execute" class="com.wang.actions.REGAction">
+			<result name="success">/user/reg_execute.jsp</result>
+		</action> 
+
 		<action name="login_verify" class="com.wang.actions.LoginAction"
 			method="verify">
 			<result name="success">/user/login_success.jsp</result>
 			<result name="error">/user/login_input.jsp</result>
 		</action>
 		<action name="login_execute" class="com.wang.actions.LoginAction">
-      <result name="success">/user/login_input.jsp</result>
-    </action>
+			<result name="success">/user/login_execute.jsp</result>
+		</action>
 	</package>
 </struts>    

@@ -10,6 +10,6 @@ public interface UserDAO {
 
 	List<User> getUser(Integer userId);
 
-
+	public void addUser(String userNmae, String password);
 
 }

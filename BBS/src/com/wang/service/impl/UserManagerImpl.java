@@ -19,7 +19,6 @@ public class UserManagerImpl implements UserManager {
 	public void setUserDAOImpl(UserDAO userDAOImpl) {
 		this.userDAOImpl = userDAOImpl;
 	}
-
 	public boolean validateUser(String userName, String password) {
 
 		if (userDAOImpl.getUser(userName, password).isEmpty()) {
@@ -28,5 +27,7 @@ public class UserManagerImpl implements UserManager {
 			return true;
 		}
 	}
-
+	public void addUser(String userName, String password) {
+			userDAOImpl.addUser(userName, password);
+	}
 }

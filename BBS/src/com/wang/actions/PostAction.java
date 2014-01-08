@@ -24,11 +24,6 @@ public class PostAction extends ActionSupport {
 	public void setPageManager(PageManager pageManager) {
 		this.pageManager = pageManager;
 	}
-
-	public PostAction() {
-		page = new Page();
-	}
-
 	public Page getPage() {
 		return page;
 	}

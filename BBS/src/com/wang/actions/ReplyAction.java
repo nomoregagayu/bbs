@@ -14,6 +14,7 @@ import com.wang.web.dto.Page;
 public class ReplyAction extends ActionSupport {
 
 	Page page;
+	Reply reply;
 	PageManager pageManager;
 
 	public PageManager getPageManager() {
@@ -22,12 +23,6 @@ public class ReplyAction extends ActionSupport {
 	@Resource(name = "replyPageManagerImpl")
 	public void setPageManager(PageManager pageManager) {
 		this.pageManager = pageManager;
-	}
-
-	Reply reply;
-	public ReplyAction() {
-		reply = new Reply();
-		page = new Page();
 	}
 
 	public Page getPage() {

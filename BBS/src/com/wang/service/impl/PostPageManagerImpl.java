@@ -20,6 +20,7 @@ public class PostPageManagerImpl implements PageManager {
 	public void setPostDAOImpl(PostDAO postDAOImpl) {
 		this.postDAOImpl = postDAOImpl;
 	}
+	@Override
 	public Page list(int currentPage) {
 		Page page = new Page();
 		int totalCount = postDAOImpl.getTotalCount();
@@ -52,12 +53,10 @@ public class PostPageManagerImpl implements PageManager {
 		return page;
 
 	}
-	@Override
 	public Page list(int pid, int currentPage) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
 	public void add(Integer pid, String title, String content) {
 		// TODO Auto-generated method stub
 		

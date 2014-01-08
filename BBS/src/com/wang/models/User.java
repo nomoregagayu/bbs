@@ -1,4 +1,4 @@
-package com.wang.models;
+ package com.wang.models;
 
 import java.sql.Timestamp;
 import java.util.List;
