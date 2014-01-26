@@ -1,0 +1,7 @@
+.LogButton{height:36px;width:70px;float:right;background-color:888888;margin-top:7px;text-align:center;line-height:36px}
+.LogButton a:link,a:active,a:visited{font-size:16px;color:#454545;letter-spacing:2px;font-family:微软雅黑, Tahoma, Verdana, Arial;text-decoration:none;}
+.LogButton a:hover{font-size:16px;color:#111111;letter-spacing:2px;font-family:微软雅黑, Tahoma, Verdana, Arial;text-decoration:none;}
+
+.RegButton{height:36px;width:70px;float:right;background-color:99cc00;margin-top:7px;margin-right:180px;text-align:center;line-height:36px}
+.RegButton a:link,a:active,a:visited{font-size:16px;color:#eeeeee;letter-spacing:2px;font-family:微软雅黑, Tahoma, Verdana, Arial;text-decoration:none;}
+.RegButton a:hover{font-size:16px;color:#ffffff;letter-spacing:2px;font-family:微软雅黑, Tahoma, Verdana, Arial;text-decoration:none;}
