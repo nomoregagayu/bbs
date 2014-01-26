@@ -4,7 +4,9 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
 
+@Component("User")
 public  class User {
 	private int id;
 	private String password;

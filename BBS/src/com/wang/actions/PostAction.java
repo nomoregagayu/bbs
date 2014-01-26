@@ -13,9 +13,8 @@ import com.wang.web.dto.Page;
 @Scope("prototype")
 public class PostAction extends ActionSupport {
 
-	Page page;
-	PageManager pageManager;
-
+	private Page page;
+	private PageManager pageManager;
 	public PageManager getPageManager() {
 		return pageManager;
 	}
@@ -27,7 +26,7 @@ public class PostAction extends ActionSupport {
 	public Page getPage() {
 		return page;
 	}
-
+	@Resource
 	public void setPage(Page page) {
 		this.page = page;
 	}

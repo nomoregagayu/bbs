@@ -2,8 +2,11 @@ package com.wang.web.dto;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.wang.models.Article;
 
+@Component("page")
 public class Page {
 	private int currentPage;
 	private int nextPage;

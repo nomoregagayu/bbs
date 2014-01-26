@@ -20,16 +20,20 @@
 			method="{1}">
 			<result type="dispatcher">/user/post_{1}.jsp </result>
 		</action>
- 
+		<!--registration -->
 		<action name="reg_add" class="com.wang.actions.REGAction"
 			method="add">
-			<result type="chain" name="success">post_list</result>
+			<result type="chain" name="success">reg_send</result>
 			<result name="error">/user/reg_execute.jsp</result>
 		</action>
 		<action name="reg_execute" class="com.wang.actions.REGAction">
 			<result name="success">/user/reg_execute.jsp</result>
-		</action> 
-
+		</action>
+		<action name="reg_send" class="com.wang.actions.REGAction"
+			method="send">
+			<result type="redirect" name="success">/user/reg_verify.jsp</result>
+		</action>
+		<!--login -->
 		<action name="login_verify" class="com.wang.actions.LoginAction"
 			method="verify">
 			<result name="success">/user/login_success.jsp</result>

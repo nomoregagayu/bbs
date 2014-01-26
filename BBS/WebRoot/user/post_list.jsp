@@ -23,44 +23,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>"><!--WebRoot的相对路径  -->
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Java|Java世界_中文论坛|ChinaJavaWorld技术论坛 : Java语言*初级版</title>
+<title>嘎嘎鱼论坛</title>
 
 <link rel="stylesheet" type="text/css" href="user/images/style.css"
   title="Integrated Styles">
 <script language="JavaScript" type="text/javascript"
   src="user/images/global.js"></script>
-<link rel="alternate" type="application/rss+xml" title="RSS"
-  href="http://bbs.chinajavaworld.com/rss/rssmessages.jspa?forumID=20">
+<link type="text/css" rel="stylesheet" href="user/css/topmenu.css">
+<link type="text/css" rel="stylesheet" href="user/css/logreg.css">
 <script language="JavaScript" type="text/javascript"
   src="user/images/common.js"></script>
 </head>
 <body>
-  <table border="0" cellpadding="0" cellspacing="0" width="100%">
-    <tbody>
-      <tr>
+  <div style ="height:50px;width:100%;background-color:666666">
+    <div class="RegButton" ><a href="javascript:" onClick="top.location.href='user/log_execute'">注册</a></div>
+     <div class="LogButton" ><a href="javascript:" onClick="top.location.href='user/reg_execute'">登陆</a></div>
+  </div>
+  <!--topmenu开始  -->
+    <div style="width:100%;height:100px;background-color:dark" > 
+    <div id="navmaster">
+  <ul>
+    <li id="ctl01_liIndex" class="M1Common M1">
+      <div style="padding-top:27px;"><a href="http://blog.junengliang.com/">网站首页</a></div>
+    </li>
+    <li id="ctl01_liQCenter" class="M2Common M2">
+      <div style="padding-top:44px;"><a title="论坛首页" href="#">论坛首页</a><span class="bordCss bordBottomCssN"></span></div>
+    </li>
+    <li id="ctl01_liPrice" class="M3Common M3">
+      <div style="padding-top:32px;"><a style="padding:9px 0 0px 21px;" href="#">预留</a></div>
+    </li>
+    <li id="ctl01_liUseCase" class="M4Common M4">
+      <div style="padding-top:23px;"><a href="#">预留</a></div>
+    </li>
+    <li id="ctl01_liCustomer" class="M5Common M5">
+      <div style="padding-top:37px;text-align:left;padding-left:14px;"><a style="" href="#">帮助</a></div>
+    </li>
+  </ul>
+</div>
 
-        <td><img src="user/images/header-stretch.gif" alt="" border="0"
-          height="57" width="100%"></td>
-        <td width="1%"><div style="background-image:url(user/images/header-right.gif);height:57px;width:200px"></a><a href="javascript:" onClick="top.location.href='user/login_execute'" style="font-size:14px"><U>登录</U></a><a href="javascript:" onClick="top.location.href='user/reg_execute'" style="font-size:14px"><U> 注册</U></a><a onClick="" style="font-size:14px"><U> 登出</U></a>  </div> </td>
-      </tr>
-    </tbody>
-  </table>
-  <br>
-  <div id="jive-forumpage">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tbody>
-        <tr valign="top">
-          <td width="98%"><p class="jive-breadcrumbs">嘎嘎鱼</p>
-            <p class="jive-description">探讨Java语言基础知识,基本语法等 大家一起交流
-              共同提高！谢绝任何形式的广告</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="jive-buttons">
-      <table summary="Buttons" border="0" cellpadding="0" cellspacing="0">
+    
+<!--下拉菜单2开始-->
+<div id="divDown2" class="downMenu" pdleft="23" style="display:none;z-index:10999;position:absolute;">
+  <ul>
+    <li><a title="Java" href="#" style="border-top:1px solid #fff;">Java</a> </li>
+    <li><a title="Linux" href="#">Linux</a> </li>
+    <li><a title=".NET" href="#" target="_blank">.NET</a> </li>
+    <li><a title="C++&C" href="#">C++&C</a> </li>
+  </ul>
+</div>
+<!--下拉菜单2结束--> 
+    </div>
+ <!--topmenu结束  -->
+    <div style="background-color:white">
+      <table  >
         <tbody>
-          <tr>
+          <tr >
             <td class="jive-icon"><a
               href="http://bbs.chinajavaworld.com/post%21default.jspa?forumID=20"><img
                 src="user/images/post-16x16.gif" alt="发表新主题" border="0" height="16"
@@ -74,9 +91,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </tbody>
       </table>
     </div>
-    <br>
       <!--分页  -->
-    <table border="0" cellpadding="3" cellspacing="0" width="100%">
+    <table border="0" cellpadding="3" cellspacing="0" width="100%" style="background-color:white">
       <tbody>
         <tr valign="top">
           <td><span class="nobreak"> 总页数: <%=pageDetail.getTotalPage()%>
@@ -182,12 +198,139 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </table>
     <!--帖子结束  -->
     <br> <br>
-  </div>
+  
   <script>
     var obj = document.getElementsByName("page[]");
     obj[
   <%=pageDetail.getCurrentPage()-1%>
     ].className = "jive-current";
   </script>
+<!--下拉菜单  -->
+<script type="text/javascript">
+var navmaster = document.getElementById("navmaster");
+var lis = navmaster.getElementsByTagName("li");
+var hrefas = navmaster.getElementsByTagName("a");
+for (var i = 0; i < lis.length; i++) {
+  lis[i].index = i + 1;
+  if (lis[i].className.toLowerCase().indexOf("hover") > -1) {
+    hoverLi(lis[i]);lis[i].isHover = true;
+  }
+  lis[i].onmouseover = function () {
+    hoverLi(this); sb_setmenunav('divDown' + this.index, true, this);
+  }
+  lis[i].onmouseout = function () {
+    sb_setmenunav('divDown' + this.index, false, this); unHoverLi(this);
+  }
+  lis[i].onclick = function () {
+    var href = this.getElementsByTagName("a")[0].href;
+    if (href)
+      window.location = href;
+  }
+
+}
+function getSpanByClassName(ele, className) {
+  var spans = ele.getElementsByTagName("span");
+  for (var i = 0; i < spans.length; i++) {
+    var cName = spans[i].className || "";
+    if (cName.toLowerCase() == className.toLowerCase()) {
+      return spans[i];
+    }
+  }
+}
+function hoverLi(obj) {
+  // obj.style.background = 'url(/images/MasterNew/menu_hover_ico' + obj.index + '.png) top left'; obj.style.color = '#fff';
+  obj.className = "M" + obj.index + "Common M" + obj.index + "Hover";
+  var dda = obj.getElementsByTagName("a")[0];
+  //if(!dda.prevColor && dda.style.color!="#ffffff")dda.prevColor = dda.style.color;
+  dda.style.color = "#ffffff";
+  var span = getSpanByClassName(obj, "bordCss bordBottomCssN") || obj.spanCursor;
+  if (span) {
+    span.className = "bordCss bordBottomCssNF";
+    obj.spanCursor = span;
+  }
+}
+function unHoverLi(obj) {
+  if (!obj.isHover) {
+    obj.className = "M" + obj.index + "Common M" + obj.index;
+    var dda = obj.getElementsByTagName("a")[0];
+    dda.style.color = "";
+    if (obj.spanCursor) obj.spanCursor.className = "bordCss bordBottomCssN";
+  }
+}
+function openwindowSup(url, name, iWidth, iHeight) {
+
+  var url;                                 //转向网页的地址;
+  var name;                           //网页名称，可为空;
+  var iWidth;                          //弹出窗口的宽度;
+  var iHeight;                        //弹出窗口的高度;
+  var iTop = (window.screen.availHeight + 30 - iHeight) / 2;       //获得窗口的垂直位置;
+  var iLeft = (window.screen.availWidth + 208 - iWidth) / 2;           //获得窗口的水平位置;
+  var param = 'height=' + iHeight + ',width=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',border=no,toolbar=no,menubar=no,scrollbars=no,resizable=yes,location=no,status=no';
+  var o = window.open(url, name, param);
+  o.focus();
+}
+
+function getCoordsNav(el) {
+  var box = el.getBoundingClientRect(),
+  doc = el.ownerDocument,
+  body = doc.body,
+  html = doc.documentElement,
+  clientTop = html.clientTop || body.clientTop || 0,
+  clientLeft = html.clientLeft || body.clientLeft || 0,
+  top = box.top + (self.pageYOffset || html.scrollTop || body.scrollTop) - clientTop,
+  left = box.left + (self.pageXOffset || html.scrollLeft || body.scrollLeft) - clientLeft
+  return { 'top': top, 'left': left };
+};
+function sb_setmenunav(name, vis, obj) {
+  var d = document.getElementById(name); //要显示隐藏的div
+  if (!d) return;
+  var padLeft = parseInt(d.getAttribute("pdLeft") || 0);
+  if (vis) {
+    if (d.timeArray) {
+      window.clearTimeout(d.timeArray);
+      d.timeArray = 0;
+    }
+    d.style.display = "block";
+    if (!d.onmouseover) {
+      d.onmouseover = function () {
+        sb_setmenunav(name, true);
+      }
+      d.onmouseout = function () {
+        sb_setmenunav(name, false);
+        unHoverLi(obj);
+      }
+    }
+    if (obj) {
+      var objp = obj;
+      if (objp.parentNode.tagName.toLowerCase() == "li")
+        objp = obj.parentNode;
+      var xy = getCoordsNav(objp);
+      var xias = xy.left;
+      //alert(d.offsetWidth);
+      var yias = xy.top + objp.offsetHeight;
+      padLeft = padLeft || 0;
+      d.style.left = xias + padLeft + "px";
+      d.style.top = yias + "px"; //;
+      
+    }
+  }
+  if (obj && obj.tagName.toLowerCase() == "li") {
+    d.needSaveClass = obj;
+    d.prevClass = obj.className;
+
+  }
+  else if (d.needSaveClass) {
+    hoverLi(d.needSaveClass);
+  }
+  if (!vis) {//延时隐藏，可以移动上去
+    if (d.spanCursor) d.spanCursor.className = "bordCss bordBottomCssN";
+    d.timeArray = window.setTimeout(function () {
+      d.style.display = "none"; d.style.height = "";
+    }, 100);
+  }
+
+}
+</script>
+<!--下拉菜单结束  -->
 </body>
 </html>

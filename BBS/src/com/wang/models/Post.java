@@ -3,8 +3,10 @@ package com.wang.models;
 import java.sql.Timestamp;
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
 
 
+@Component("Post")
 public class Post extends Article {
 	private int userId;
 	private String title;

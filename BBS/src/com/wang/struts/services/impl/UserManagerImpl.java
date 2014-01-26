@@ -11,9 +11,9 @@ import com.wang.struts.services.UserManager;
 import com.wang.tool.services.MailManager;
 
 @Component("userManagerImpl")
-public class UserManagerImpl implements UserManager {
-	UserDAO userDAO;
-	MailManager mailManager;
+public class UserManagerImpl implements UserManager{
+	private UserDAO userDAO;
+	private MailManager mailManager;
 	
 
 	@Resource(name = "mailManagerImpl")
@@ -45,12 +45,15 @@ public class UserManagerImpl implements UserManager {
 
 	public boolean sendVerification(String userName, String password) {
 		try {
-			userDAO.send(userName);
-			mailManager.sendMail(userName, password);
+			userDAO.sendVerification(userName);
+			mailManager.setMessage(userName, password);
+			Thread thread =new Thread((Runnable) mailManager);
+			thread.start();
 			return true;
 		} catch (UnsupportedEncodingException ex) {
 			ex.printStackTrace();
 			return false;
 		}
 	}
+
 }

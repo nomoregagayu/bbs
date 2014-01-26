@@ -11,11 +11,10 @@ import org.springframework.stereotype.Component;
 
 import com.wang.dao.PostDAO;
 import com.wang.models.Post;
-import com.wang.util.HibernateSessionFactory;
 
 @Component("postDAOImpl")
 public class PostDAOImpl implements PostDAO {
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;

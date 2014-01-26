@@ -19,7 +19,6 @@ import com.wang.struts.services.UserManager;
 public class LoginAction extends ActionSupport {
 	User user;
 	UserManager userManager;
-	
 	public UserManager getUserManager() {
 		return userManager;
 	}
@@ -30,6 +29,7 @@ public class LoginAction extends ActionSupport {
 	public User getUser() {
 		return user;
 	}
+	@Resource
 	public void setUser(User user) {
 		this.user = user;
 	}

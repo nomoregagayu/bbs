@@ -14,7 +14,7 @@ import com.wang.web.dto.Page;
 //Code refactoring
 @Component("replyPageManagerImpl")
 public class ReplyPageManagerImpl implements PageManager  {
-	ReplyDAO replyDAOImpl;
+	private ReplyDAO replyDAOImpl;
 	
 	public ReplyDAO getReplyDAOImpl() {
 		return replyDAOImpl;

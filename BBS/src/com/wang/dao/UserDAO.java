@@ -11,6 +11,6 @@ public interface UserDAO {
 	List<User> getUser(Integer userId);
 
 	public void addUser(String userName, String password);
-	void send(String userName);
+	void sendVerification(String userName);
 
 }

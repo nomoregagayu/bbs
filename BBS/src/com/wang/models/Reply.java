@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.stereotype.Component;
 
 
+@Component("Reply")
 public class Reply extends Article {
 	private int followId;
 	private int postId;

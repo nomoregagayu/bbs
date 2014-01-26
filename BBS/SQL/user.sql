@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS user;
 create table user(
  id int primary key auto_increment,
  #一个字母/一个文字一个varchar
- name varchar(10) not null,
+ name varchar(100) not null,
  password varchar(12) not null,
  rtime datetime not null,
  sign text,

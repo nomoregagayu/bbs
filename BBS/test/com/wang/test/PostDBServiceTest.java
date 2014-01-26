@@ -1,12 +1,10 @@
 package com.wang.test;
 
 import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.wang.tool.services.EncryptorManager;
 import com.wang.tool.services.MailManager;
 
 
@@ -53,7 +51,8 @@ public class PostDBServiceTest {
 	public void mailTester() throws UnsupportedEncodingException {
 		ClassPathXmlApplicationContext ctx= new ClassPathXmlApplicationContext("application.xml");
 		MailManager mailManager = (MailManager)ctx.getBean("mailManagerImpl");
-		mailManager.sendMail("wangmengyang101@me.com", "asdasd");
-
+		mailManager.setMessage("wangmengyang101@me", "asdasd");
+		Thread thread =new Thread((Runnable) mailManager);
+		thread.start();
 	}
 }

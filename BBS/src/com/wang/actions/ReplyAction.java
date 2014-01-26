@@ -9,17 +9,19 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.wang.models.Reply;
 import com.wang.struts.services.PageManager;
 import com.wang.web.dto.Page;
+
 @Component("reply_*")
 @Scope("prototype")
 public class ReplyAction extends ActionSupport {
 
-	Page page;
-	Reply reply;
-	PageManager pageManager;
+	private Page page;
+	private Reply reply;
+	private PageManager pageManager;
 
 	public PageManager getPageManager() {
 		return pageManager;
 	}
+
 	@Resource(name = "replyPageManagerImpl")
 	public void setPageManager(PageManager pageManager) {
 		this.pageManager = pageManager;
@@ -28,21 +30,36 @@ public class ReplyAction extends ActionSupport {
 	public Page getPage() {
 		return page;
 	}
+
 	public Reply getReply() {
 		return reply;
 	}
+
+	@Resource
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	@Resource
+	public void setReply(Reply reply) {
+		this.reply = reply;
+	}
+
 	public String edit() {
 		return SUCCESS;
 	}
+
 	public String add() {
 		try {
-			pageManager.add(reply.getPostId(), reply.getTitle(), reply.getContent());
+			pageManager.add(reply.getPostId(), reply.getTitle(),
+					reply.getContent());
 			return SUCCESS;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return ERROR;
 		}
 	}
+
 	public String list() {
 		if (page.getCurrentPage() == 0) {
 			page.setCurrentPage(1);
@@ -58,13 +75,5 @@ public class ReplyAction extends ActionSupport {
 		} else {
 			return ERROR;
 		}
-	}
-
-	public void setPage(Page page) {
-		this.page = page;
-	}
-	
-	public void setReply(Reply reply) {
-		this.reply = reply;
 	}
 }

@@ -14,10 +14,9 @@ import com.wang.dao.ReplyDAO;
 import com.wang.models.Post;
 import com.wang.models.Reply;
 import com.wang.models.User;
-import com.wang.util.HibernateSessionFactory;
 @Component("replyDAOImpl")
 public class ReplyDAOImpl implements ReplyDAO {
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;

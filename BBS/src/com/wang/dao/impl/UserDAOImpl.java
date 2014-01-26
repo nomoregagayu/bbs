@@ -14,11 +14,10 @@ import org.springframework.stereotype.Component;
 import com.wang.dao.UserDAO;
 import com.wang.models.Reply;
 import com.wang.models.User;
-import com.wang.util.HibernateSessionFactory;
 
 @Component("userDAOImpl")
 public class UserDAOImpl implements UserDAO {
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
@@ -60,7 +59,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	//以后添加功能
 	@Override
-	public void send(String userName) {
+	public void sendVerification(String userName) {
 		Session session = sessionFactory.getCurrentSession();
 		
 	}
